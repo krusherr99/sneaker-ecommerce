@@ -9,6 +9,7 @@
     width: 50%;
     box-sizing: border-box;
     text-align: center;
+    border-bottom: #f5f5f9 solid 2rpx;
     .product-image {
       width: 260px;
       height: 166px;
@@ -56,7 +57,10 @@
       }
     }
   }
-  .produc:first-child {
-    border-right: red solid 2rpx;
+  .product:nth-child(2n+1) {
+    border-right: #f5f5f9 solid 2rpx;
+  }
+  .product:nth-child(2n) {
+    border-left: #f5f5f9 solid 2rpx;
   }
 }
