@@ -11,6 +11,7 @@ import SeriesView from './components/SeriesView'
 import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.less'
+import HotList from './components/HotList'
 
 // #region 书写注意
 //
@@ -104,6 +105,7 @@ class Index extends Component {
           </Swiper>
           <DeclarationBar />
           <SeriesView />
+          <HotList />
         </View>
       </View>
     )
