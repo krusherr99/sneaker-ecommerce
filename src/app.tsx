@@ -26,7 +26,8 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/home/index'
+      'pages/home/index',
+      'pages/user/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -49,12 +50,12 @@ class App extends Component {
       },
       {
         "pagePath": "pages/home/index",
-        "text": " 鉴别查询",
+        "text": " 购物车",
         "iconPath": "static/images/ic_tab_service_gray.png",
         "selectedIconPath": "static/images/ic_tab_service_selected.png"
       },
       {
-        pagePath: 'pages/home/index',
+        pagePath: 'pages/user/index',
         text: '我',
         iconPath: 'static/images/ic_tab_user_nor.png',
         selectedIconPath: 'static/images/ic_tab_user_sel.png',
