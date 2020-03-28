@@ -1,10 +1,12 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
+import { View, Button, Text, Swiper, SwiperItem, Image } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
-import SearchBar from './components/SearchBar/index'
+import SearchBar from './components/SearchBar'
 import ScrollTitle from './components/ScrollTitle'
+import DeclarationBar from './components/DeclarationBar'
+import SeriesView from './components/SeriesView'
 
 import { add, minus, asyncAdd } from '../../actions/counter'
 
@@ -85,7 +87,24 @@ class Index extends Component {
           <SearchBar />
           <ScrollTitle />
         </View>
-        <View className='content'>我是内容</View>
+        <View className='content'>
+          <Swiper
+            className='swipper-container'
+            indicatorDots //是否显示面板指示点
+            indicatorActiveColor='#fff' // 选中的指示点颜色
+            indicatorColor='#a0d1d4' // 未选中的指示点颜色
+            autoplay
+          >
+            <SwiperItem>
+              <Image className='slide-image' src='https://du.hupucdn.com/news_byte381112byte_5cfb7dc89ccdac03f4750ce35fe02a7f_w900h300.png'></Image>
+            </SwiperItem>
+            <SwiperItem>
+              <Image className='slide-image' src='https://du.hupucdn.com/FlgI7w6eM2As2UKcFxOsDBLUw-10'></Image>
+            </SwiperItem>
+          </Swiper>
+          <DeclarationBar />
+          <SeriesView />
+        </View>
       </View>
     )
   }
