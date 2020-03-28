@@ -4,6 +4,7 @@ import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
 import SearchBar from './components/SearchBar/index'
+import ScrollTitle from './components/ScrollTitle'
 
 import { add, minus, asyncAdd } from '../../actions/counter'
 
@@ -82,6 +83,7 @@ class Index extends Component {
       <View className='main'>
         <View className='fix-header'>
           <SearchBar />
+          <ScrollTitle />
         </View>
         <View className='content'>我是内容</View>
       </View>

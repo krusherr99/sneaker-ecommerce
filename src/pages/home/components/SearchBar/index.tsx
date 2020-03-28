@@ -1,11 +1,11 @@
-import Taro, { Component, Config } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Icon } from '@tarojs/components'
 
 import './index.less'
 
 import all from '../../../../static/images/all@3x.png'
 
-export default class Index extends Component {
+export default class SearchBar extends Component {
 
   render () {
     return (
