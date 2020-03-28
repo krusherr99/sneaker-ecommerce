@@ -14,6 +14,18 @@ export default class SeriesView extends Component {
           <Image className='series-image' src={item}></Image>
           <View className='series-text'>Air Jordan</View>
         </View>
+        <View className='series-cell'>
+          <Image className='series-image' src={item}></Image>
+          <View className='series-text'>Air Jordan</View>
+        </View>
+        <View className='series-cell'>
+          <Image className='series-image' src={item}></Image>
+          <View className='series-text'>Air Jordan</View>
+        </View>
+        <View className='series-cell'>
+          <Image className='series-image' src={item}></Image>
+          <View className='series-text'>Air Jordan</View>
+        </View>
       </View>
     )
   }

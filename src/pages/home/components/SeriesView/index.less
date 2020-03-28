@@ -2,13 +2,24 @@
   background-color: #fff;
   margin: 2px 0;
   .series-cell {
-
+    display: inline-flex;
+    flex-direction: column;
+    flex: 0 0 100px;
+    height: 148px;
+    max-width: 25%;
+    padding: 0 45px;
+    box-sizing: border-box;
     .series-image {
       width: 100px;
       height: 64px;
     }
     .series-text {
+      // width: 150px;
       font-family: PingFangSC-Semibold;
+      font-size: 22px;
     }
+  }
+  .series-cell:first-child {
+    padding-left: 40px;
   }
 }
