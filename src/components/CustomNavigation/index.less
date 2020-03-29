@@ -2,15 +2,16 @@
 
 .inaver {
   background-color: #fff;
-  height: 48px;
-  padding-top: 20px;
+  height: 48PX;
+  padding-top: 20PX;
   width: 100vw;
-  height: 124px;
   display: flex;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
+  justify-content: space-between;
+  z-index: 5000;
 
   .left::after {
     content: '';
@@ -41,9 +42,31 @@
     }
 
     .line {
-      width: 1px;
+      width: 1PX;
       background: #E8E8E8;
       height: 40px;
+      transform: scaleX(0.5);
     }
   }
+
+  .center {
+    height: 36px;
+    line-height: 36px;
+    font-size: 36px;
+    font-family: PingFangSC-Medium;
+    color: #000000;
+    text-align: center;
+  }
+
+  .right {
+    width: 174px;
+    height: 66px;
+    margin-right: 16px;
+  }
+}
+
+.protect-inaver {
+  background: #fff;
+  height: 48PX;
+  padding-top: 20PX;
 }
