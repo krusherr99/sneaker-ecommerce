@@ -6,11 +6,16 @@ import { View, Image } from '@tarojs/components'
 import item from './item.jpg'
 
 export default class HotList extends Component {
+  handleClick = () => {
+    Taro.navigateTo({
+      url: '/pages/product/product'
+    })
+  }
 
   render() {
     return (
       <View className='hot-list'>
-        <View className='product'>
+        <View className='product' onClick={this.handleClick}>
           <Image className='product-image' src={item}></Image>
           <View className='product-title'>Air Jordan 11 康扣</View>
           <View className='price-info'>
