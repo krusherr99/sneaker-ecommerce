@@ -7,6 +7,7 @@ import product2 from './product2.jpg'
 import right from './right.png'
 import './product.less'
 import Service from './components/Service'
+import ProductDetail from './components/ProductDetail'
 
 export default class Product extends Component {
   config: Config = {
@@ -52,6 +53,7 @@ export default class Product extends Component {
             </View>
           </View>
           <Service />
+          <ProductDetail />
         </View>
       </View>
     )
