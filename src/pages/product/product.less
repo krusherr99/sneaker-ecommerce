@@ -107,7 +107,7 @@
 
     .select-mask {
       width: 100%;
-      height: 850px;
+      height: 1130px;
       background: #fafafd;
       position: fixed;
       left: 0;
@@ -185,6 +185,83 @@
             margin-bottom: 48px;
             width: 36px;
             height: 36px;
+          }
+        }
+      }
+
+      .select-container {
+        .size-list-wrap {
+          display: flex;
+          padding-top: 20px;
+          padding-left: 20px;
+          flex-wrap: wrap;
+          .select-size-info {
+            background: white;
+            width: 167px;
+            height: 167px;
+            box-shadow: 0 2rpx 12rpx 0 rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-right: 14px;
+            margin-bottom: 14px;
+            .size{
+              color: #14141a;
+              font-family: HelveticaNeue-CondensedBold;
+              font-size: 36rpx;
+            }
+            .size-price{
+              color: #5a5f6d;
+              font-family: PingFangSC-Regular;
+              font-size: 26px;
+            }
+
+          }
+        }
+      }
+
+      .buy-button {
+        display: flex;
+        padding: 0 20px;
+        padding-top: 20px;
+        background: white;
+        box-sizing: border-box;
+        height: 190px;
+        .left {
+          background-color: #00cbcc;
+        }
+        .right {
+          background: #292a33;
+          margin-left: 12px;
+        }
+        .button-view {
+          color: #fff;
+          font-family: PingFangSC-Regular;
+          font-size: 28 rpx;
+          font-weight: normal;
+          display: flex;
+          height: 132px;
+          align-items: center;
+          justify-content: center;
+          flex: 1;
+          .button-left {
+            margin-right: 26px;
+            .price {
+              color: white;
+              font-family: HelveticaNeue-CondensedBold;
+              font-size: 42rpx;
+              height: 56rpx;
+              line-height: 56rpx;
+            }
+          }
+          .button-right {
+            border-left: 2rpx solid #fff;
+            padding-left: 26rpx;
+            color: white;
+            font-family: PingFangSC-Regular;
+            font-size: 28rpx;
+            line-height: 28rpx;
           }
         }
       }

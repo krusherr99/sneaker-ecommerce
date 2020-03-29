@@ -89,10 +89,115 @@ export default class Product extends Component {
               </View>
               <View className='header-close-icon'>
                 <Image className='close' src={close}></Image>
+                <View className='get-seller-flow'>
+                  {/* TODO: 字体图标*/}
+                  <Text className='iconfont'></Text>
+                </View>
+              </View>
+            </View>
+            <View className='select-container'>
+              <View className='size-list-wrap'>
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+                <View className='select-size-info'>
+                  <View className='size'>36</View>
+                  <View className='size-price'>￥1179</View>
+                </View>
+
+
+              </View>
+            </View>
+            <View>
+              <View className='buy-button'>
+                <View className='button-view left'>
+                  <View className='button-left'>
+                    <View className='price'>￥1069</View>
+                  </View>
+                  <View className='button-right'>立即购买</View>
+                </View>
+                <View className='button-view right'>
+                  <View className='button-left'>
+                    <View className='price'>￥1189</View>
+                  </View>
+                  <View className='button-right'>闪电直发</View>
+                </View>
               </View>
             </View>
           </View>
-          <View className='mask'></View> 
+          <View className='mask'></View>
         </View>
       </View>
     )
