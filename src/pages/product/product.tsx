@@ -1,5 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Image, Swiper, SwiperItem, Text } from '@tarojs/components'
+
+
 import CustomNavigation from '../../components/CustomNavigation'
 
 import product1 from './product1.jpg'
@@ -8,11 +10,16 @@ import right from './right.png'
 import './product.less'
 import Service from './components/Service'
 import ProductDetail from './components/ProductDetail'
+import { ITouchEvent } from '@tarojs/components/types/common'
 
 export default class Product extends Component {
   config: Config = {
     navigationBarTitleText: '商品详情',
     navigationStyle: 'custom'
+  }
+
+  handleClickBuy = (e: ITouchEvent) => {
+    console.log(e)
   }
 
   render () {
@@ -54,6 +61,9 @@ export default class Product extends Component {
           </View>
           <Service />
           <ProductDetail />
+          <View className='buy-button-view'>
+            <View className='buy' onClick={this.handleClickBuy}>立即购买</View>
+          </View>
         </View>
       </View>
     )
