@@ -19,7 +19,14 @@ export default class MineOrder extends Component {
             <Image className='right-icon' src={right_icon}></Image>
           </View>
         </View>
-        <View className='content'></View>
+        <View className='content'>
+          <View className='item'>
+            <View className='icon-wrapper'>
+              <Label className='iconfont'></Label>
+              <View className='text'>待付款</View>
+            </View>
+          </View>
+        </View>
       </View>
     )
   }
