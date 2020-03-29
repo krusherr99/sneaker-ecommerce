@@ -4,6 +4,11 @@ import { View, Image } from '@tarojs/components'
 import MineOrder from './MineOrder'
 
 import avatar from './avatar.png'
+import item1 from './item1.png'
+import item2 from './item2.png'
+import item3 from './item3.png'
+import item4 from './item4.png'
+import right_icon from './right_icon.png'
 import './index.less'
 
 export default class SearchBar extends Component {
@@ -17,6 +22,29 @@ export default class SearchBar extends Component {
         </View>
         <View className='item-wrap'>
           <MineOrder />
+          <View className='container-item'>
+            <Image src={item1}></Image>
+            <View className='title'>账户</View>
+            <Image src={right_icon}></Image>
+          </View>
+          
+          <View className='container-item'>
+            <Image src={item2}></Image>
+            <View className='title'>卡卷</View>
+            <Image src={right_icon}></Image>
+          </View>
+
+          <View className='container-item'>
+            <Image src={item3}></Image>
+            <View className='title'>地址管理</View>
+            <Image src={right_icon}></Image>
+          </View>
+
+          <View className='container-item'>
+            <Image src={item4}></Image>
+            <View className='title'>消息通知</View>
+            <Image src={right_icon}></Image>
+          </View>
         </View>
       </View>
     )
