@@ -7,6 +7,9 @@ import CustomNavigation from '../../components/CustomNavigation'
 import product1 from './product1.jpg'
 import product2 from './product2.jpg'
 import right from './right.png'
+import select from './select.jpg'
+import small_icon from './small_icon.png'
+import close from './close.png'
 import './product.less'
 import Service from './components/Service'
 import ProductDetail from './components/ProductDetail'
@@ -22,7 +25,11 @@ export default class Product extends Component {
     console.log(e)
   }
 
-  render () {
+  handleClose = () => {
+    console.log('guanbi');
+  }
+
+  render() {
     return (
 
       <View id='product'>
@@ -40,15 +47,15 @@ export default class Product extends Component {
                 <Image className='min-header-image' src={product2}></Image>
               </SwiperItem>
             </Swiper>
-          <View className='product-title'>
-            <Text>Air Jordan 1 Low Black Toe (GS) 黑脚趾</Text>
-          </View>
-          <View className='product-price'>
-            <View className='price-info'>
-              <Text className='price-unit'>￥</Text>
-              <Text className='price'>1029</Text>
+            <View className='product-title'>
+              <Text>Air Jordan 1 Low Black Toe (GS) 黑脚趾</Text>
             </View>
-          </View>
+            <View className='product-price'>
+              <View className='price-info'>
+                <Text className='price-unit'>￥</Text>
+                <Text className='price'>1029</Text>
+              </View>
+            </View>
           </View>
           <View className='product-coupon'>
             <View className='coupon-title'>选择尺码</View>
@@ -64,6 +71,28 @@ export default class Product extends Component {
           <View className='buy-button-view'>
             <View className='buy' onClick={this.handleClickBuy}>立即购买</View>
           </View>
+          <View className='select-mask'>
+            <View className='select-header'>
+              <View className='header-left'>
+                <View className='header-image'>
+                  <Image src={select}></Image>
+                </View>
+                <View className='header-info'>
+                  <View className='price'>
+                    <Text className='unit'>￥</Text>1019
+                  </View>
+                  <View className='header-desc'>
+                    <Image src={small_icon}></Image>
+                    <View className='cover-desc'>请选择商品</View>
+                  </View>
+                </View>
+              </View>
+              <View className='header-close-icon'>
+                <Image className='close' src={close}></Image>
+              </View>
+            </View>
+          </View>
+          <View className='mask'></View> 
         </View>
       </View>
     )
