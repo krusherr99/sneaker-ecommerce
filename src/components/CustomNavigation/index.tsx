@@ -5,11 +5,16 @@ import { View, Image } from '@tarojs/components'
 
 import back from './back.png'
 import home from './home.png'
+import { ITouchEvent } from '@tarojs/components/types/common'
 
 export default class CustomNavigation extends Component {
 
-  handleNavigateBack = () => {
-    console.log("点击了");
+  // handleNavigateBack = () => {
+  //   console.log("left点击了");
+  // }
+
+  test = (e: ITouchEvent) => {
+    console.log('back icon点击了');
   }
 
   render() {
@@ -17,9 +22,13 @@ export default class CustomNavigation extends Component {
       <View>
         <View className='inaver'>
           <View className='left'>
-            <Image className='icon' src={back} onClick={this.handleNavigateBack.bind(this)}></Image>
+            <View onClick={(e) => { console.log('点击了'); }}>
+              <Image className='icon' src={back}></Image>
+            </View>
             <View className='line'></View>
-            <Image className='icon' src={home}></Image>
+            <View>
+              <Image className='icon' src={home}></Image>
+            </View>
           </View>
           <View className='center'>商品详情</View>
           <View className='right'></View>
