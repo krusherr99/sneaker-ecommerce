@@ -69,7 +69,7 @@ export default class Product extends Component<ProductProps, ProductState> {
           </View>
           <View className='product-coupon'>
             <View className='coupon-title'>选择尺码</View>
-            <View className='coupon-list'>
+            <View className='coupon-list' onClick={this.handleClickBuy}>
               <View className='select-name'>
                 <Text>请选择尺码</Text>
               </View>
@@ -109,89 +109,28 @@ export default class Product extends Component<ProductProps, ProductState> {
             <View className='select-container'>
               <View className='size-list-wrap'>
                 <View className='select-size-info'>
-                  <View className='size'>36</View>
+                  <View className='size'>35.5</View>
                   <View className='size-price'>￥1179</View>
                 </View>
 
                 <View className='select-size-info'>
                   <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
+                  <View className='size-price'>￥1039</View>
                 </View>
 
                 <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
+                  <View className='size'>36.5</View>
+                  <View className='size-price'>￥1009</View>
                 </View>
 
                 <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1179</View>
+                  <View className='size'>37.5</View>
+                  <View className='size-price'>￥1029</View>
                 </View>
 
 
               </View>
             </View>
-            <View>
               <View className='buy-button'>
                 <View className='button-view left'>
                   <View className='button-left'>
@@ -207,9 +146,8 @@ export default class Product extends Component<ProductProps, ProductState> {
                 </View>
               </View>
             </View>
-          </View>
           {
-            showPopup && <View className='mask'></View>
+            showPopup && <View className='mask' onClick={this.handleClose}></View>
           }
         </View>
       </View>
