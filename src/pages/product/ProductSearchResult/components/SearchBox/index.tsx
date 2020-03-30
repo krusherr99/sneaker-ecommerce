@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Image, Text, Icon, Input } from '@tarojs/components'
+import { View, Icon, Input } from '@tarojs/components'
 
 
 import './index.less'
