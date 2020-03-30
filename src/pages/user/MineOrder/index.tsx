@@ -28,13 +28,13 @@ export default class MineOrder extends Component {
           </View>
           <View className='item'>
             <View className='icon-wrapper'>
-              <Label className='iconfont icon-card _span'></Label>
+              <Label className='iconfont icon-return_address'></Label>
               <View className='text'>代发货</View>
             </View>
           </View>
           <View className='item'>
             <View className='icon-wrapper'>
-              <Label className='iconfont icon-card'></Label>
+              <Label className='iconfont icon-car'></Label>
               <View className='text'>待收货</View>
             </View>
           </View>
