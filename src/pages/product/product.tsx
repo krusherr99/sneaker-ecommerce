@@ -15,7 +15,7 @@ import Service from './components/Service'
 import ProductDetail from './components/ProductDetail'
 import { ITouchEvent } from '@tarojs/components/types/common'
 
-interface ProductProps {}
+interface ProductProps { }
 interface ProductState {
   showPopup: boolean;
 }
@@ -40,7 +40,25 @@ export default class Product extends Component<ProductProps, ProductState> {
 
   render() {
     let { showPopup } = this.state
-    
+    let sizeList = [
+      {
+        size: 35.5,
+        price: 1179
+      },
+      {
+        size: 36,
+        price: 1039
+      },
+      {
+        size: 36.5,
+        price: 1009
+      },
+      {
+        size: 37.5,
+        price: 1029
+      }
+    ]
+
     return (
       <View id='product'>
         <CustomNavigation />
@@ -106,46 +124,37 @@ export default class Product extends Component<ProductProps, ProductState> {
                 </View>
               </View>
             </View>
+
             <View className='select-container'>
               <View className='size-list-wrap'>
-                <View className='select-size-info'>
-                  <View className='size'>35.5</View>
-                  <View className='size-price'>￥1179</View>
-                </View>
 
-                <View className='select-size-info'>
-                  <View className='size'>36</View>
-                  <View className='size-price'>￥1039</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>36.5</View>
-                  <View className='size-price'>￥1009</View>
-                </View>
-
-                <View className='select-size-info'>
-                  <View className='size'>37.5</View>
-                  <View className='size-price'>￥1029</View>
-                </View>
-
-
+                {
+                  sizeList.map((item) => {
+                    return (
+                      <View className='select-size-info'>
+                        <View className='size'>{item.size}</View>
+                    <View className='size-price'>￥{item.price}</View>
+                      </View>
+                    )
+                  })
+                }
               </View>
             </View>
-              <View className='buy-button'>
-                <View className='button-view left'>
-                  <View className='button-left'>
-                    <View className='price'>￥1069</View>
-                  </View>
-                  <View className='button-right'>立即购买</View>
+            <View className='buy-button'>
+              <View className='button-view left'>
+                <View className='button-left'>
+                  <View className='price'>￥1069</View>
                 </View>
-                <View className='button-view right'>
-                  <View className='button-left'>
-                    <View className='price'>￥1189</View>
-                  </View>
-                  <View className='button-right'>闪电直发</View>
+                <View className='button-right'>立即购买</View>
+              </View>
+              <View className='button-view right'>
+                <View className='button-left'>
+                  <View className='price'>￥1189</View>
                 </View>
+                <View className='button-right'>闪电直发</View>
               </View>
             </View>
+          </View>
           {
             showPopup && <View className='mask' onClick={this.handleClose}></View>
           }
