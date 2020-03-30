@@ -27,38 +27,52 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     selectMap: {
       selectSales: false,
       selectPrice: false,
-      selectNew: false,
+      selectNew: true,
       selectSize: false
     }
   }
 
   toggleSelectSales = (selectSales: boolean) => {
-    this.setState({ selectMap: {selectSales: selectSales}  })
+    const selectMap = this.state.selectMap
+    this.setState({ selectMap: { ...selectMap, selectSales } })
+  }
+
+  toggleSize = (selectSize: boolean) => {
+    const selectMap = this.state.selectMap
+    this.setState({ selectMap: { ...selectMap, selectSize } })
   }
 
 
 
   render() {
     let { selectMap } = this.state
+    let { selectSize } = selectMap
     return (
-      
+
       <View className='max-height'>
         <SearchBox />
-        <SearchFilters selectMap={selectMap} toggleSelectSales={this.toggleSelectSales} />
-        <View className='bg_screen'>
-          <View className='size-pop-view'>
-            {
-              sizeList.map((item: string) => {
-                const all = item === '全部'
-                return (
-                  <View className='size-flex-view'>
-                    <View className={classNames('size-item', { 'size-all': all })}>{item}</View>
-                  </View>
-                )
-              })
-            }
+        <SearchFilters
+          selectMap={selectMap}
+          toggleSelectSales={this.toggleSelectSales}
+          toggleSize={this.toggleSize}
+        />
+        {
+          selectSize &&
+          <View className='bg_screen'>
+            <View className='size-pop-view'>
+              {
+                sizeList.map((item: string) => {
+                  const all = item === '全部'
+                  return (
+                    <View className='size-flex-view'>
+                      <View className={classNames('size-item', { 'size-all': all })}>{item}</View>
+                    </View>
+                  )
+                })
+              }
+            </View>
           </View>
-        </View>
+        }
         <View style={{ marginTop: '-8px' }}>
           <HotList />
         </View>
