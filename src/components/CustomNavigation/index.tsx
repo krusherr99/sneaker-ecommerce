@@ -8,12 +8,16 @@ import home from './home.png'
 
 export default class CustomNavigation extends Component {
 
+  handleNavigateBack = () => {
+    console.log("点击了");
+  }
+
   render() {
     return (
       <View>
         <View className='inaver'>
           <View className='left'>
-            <Image className='icon' src={back}></Image>
+            <Image className='icon' src={back} onClick={this.handleNavigateBack.bind(this)}></Image>
             <View className='line'></View>
             <Image className='icon' src={home}></Image>
           </View>
