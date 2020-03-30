@@ -18,6 +18,13 @@ import { ITouchEvent } from '@tarojs/components/types/common'
 interface ProductProps { }
 interface ProductState {
   showPopup: boolean;
+  selectItem: Item
+}
+
+interface Item {
+  size: number,
+  price: number,
+  isSelect: boolean
 }
 
 export default class Product extends Component<ProductProps, ProductState> {
@@ -28,6 +35,11 @@ export default class Product extends Component<ProductProps, ProductState> {
 
   state: ProductState = {
     showPopup: false,
+    selectItem: {
+      size: 0,
+      price: 0,
+      isSelect: false
+    }
   }
 
   handleClickBuy = (e: ITouchEvent) => {
@@ -38,26 +50,33 @@ export default class Product extends Component<ProductProps, ProductState> {
     this.setState({ showPopup: false })
   }
 
+  handleSelect = (item: Item) => {
+    item.isSelect = true
+    this.setState({ selectItem: item }, () => { console.log(this.state.selectItem); })
+  }
+
   render() {
-    let { showPopup } = this.state
-    let isSelect = true
+    let { showPopup, selectItem } = this.state
     let sizeList = [
       {
         size: 35.5,
-        price: 1179
+        price: 1179,
+        isSelect: false
       },
       {
         size: 36,
         price: 1039,
-        isSelect: true
+        isSelect: false
       },
       {
         size: 36.5,
-        price: 1009
+        price: 1009,
+        isSelect: false
       },
       {
         size: 37.5,
-        price: 1029
+        price: 1029,
+        isSelect: false
       }
     ]
 
@@ -110,11 +129,14 @@ export default class Product extends Component<ProductProps, ProductState> {
                 </View>
                 <View className='header-info'>
                   <View className='price'>
-                    <Text className='unit'>￥</Text>1019
+                    <Text className='unit'>￥</Text>
+                    {selectItem.size ? selectItem.price : '--'}
                   </View>
                   <View className='header-desc'>
                     <Image src={small_icon}></Image>
-                    <View className='cover-desc'>请选择商品</View>
+                    <View className='cover-desc'>
+                      {selectItem.size ? `已选 ${selectItem.size}` : '请选择商品'}
+                    </View>
                   </View>
                 </View>
               </View>
@@ -123,6 +145,7 @@ export default class Product extends Component<ProductProps, ProductState> {
                 <View className='get-seller-flow'>
                   {/* TODO: 字体图标*/}
                   <Text className='iconfont'></Text>
+                  闪电直发
                 </View>
               </View>
             </View>
@@ -132,9 +155,9 @@ export default class Product extends Component<ProductProps, ProductState> {
                 {
                   sizeList.map((item) => {
                     return (
-                      <View 
-                        className={classNames('select-size-info', { 'isSelect': item.isSelect})}
-                        onClick={this.handleSelect}
+                      <View
+                        className={classNames('select-size-info', { 'isSelect': item.size === selectItem.size })}
+                        onClick={this.handleSelect.bind(this, item)}
                       >
                         <View className='size'>{item.size}</View>
                         <View className='size-price'>￥{item.price}</View>
@@ -144,20 +167,23 @@ export default class Product extends Component<ProductProps, ProductState> {
                 }
               </View>
             </View>
-            <View className='buy-button'>
-              <View className='button-view left'>
-                <View className='button-left'>
-                  <View className='price'>￥1069</View>
+            {
+              selectItem.size &&
+              <View className='buy-button'>
+                <View className='button-view left'>
+                  <View className='button-left'>
+                    <View className='price'>￥{selectItem.price}</View>
+                  </View>
+                  <View className='button-right'>立即购买</View>
                 </View>
-                <View className='button-right'>立即购买</View>
-              </View>
-              <View className='button-view right'>
-                <View className='button-left'>
-                  <View className='price'>￥1189</View>
+                <View className='button-view right'>
+                  <View className='button-left'>
+                    <View className='price'>￥{selectItem.price + 20}</View>
+                  </View>
+                  <View className='button-right'>闪电直发</View>
                 </View>
-                <View className='button-right'>闪电直发</View>
               </View>
-            </View>
+            }
           </View>
           {
             showPopup && <View className='mask' onClick={this.handleClose}></View>
