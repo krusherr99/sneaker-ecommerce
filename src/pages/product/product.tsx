@@ -143,9 +143,8 @@ export default class Product extends Component<ProductProps, ProductState> {
               <View className='header-close-icon' onClick={this.handleClose}>
                 <Image className='close' src={close}></Image>
                 <View className='get-seller-flow'>
-                  {/* TODO: 字体图标*/}
-                  <Text className='iconfont'></Text>
-                  闪电直发
+                  <Text className='iconfont icon-question'></Text>
+                  闪电直发 
                 </View>
               </View>
             </View>
