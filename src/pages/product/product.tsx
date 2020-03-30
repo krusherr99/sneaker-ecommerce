@@ -1,6 +1,6 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Image, Swiper, SwiperItem, Text } from '@tarojs/components'
-
+import classNames from 'classnames'
 
 import CustomNavigation from '../../components/CustomNavigation'
 
@@ -15,23 +15,33 @@ import Service from './components/Service'
 import ProductDetail from './components/ProductDetail'
 import { ITouchEvent } from '@tarojs/components/types/common'
 
-export default class Product extends Component {
+interface ProductProps {}
+interface ProductState {
+  showPopup: boolean;
+}
+
+export default class Product extends Component<ProductProps, ProductState> {
   config: Config = {
     navigationBarTitleText: '商品详情',
     navigationStyle: 'custom'
   }
 
+  state: ProductState = {
+    showPopup: false,
+  }
+
   handleClickBuy = (e: ITouchEvent) => {
-    console.log(e)
+    this.setState({ showPopup: true })
   }
 
   handleClose = () => {
-    console.log('guanbi');
+    this.setState({ showPopup: false })
   }
 
   render() {
+    let { showPopup } = this.state
+    
     return (
-
       <View id='product'>
         <CustomNavigation />
         <View className='container'>
@@ -71,7 +81,8 @@ export default class Product extends Component {
           <View className='buy-button-view'>
             <View className='buy' onClick={this.handleClickBuy}>立即购买</View>
           </View>
-          <View className='select-mask'>
+
+          <View className={classNames('select-mask', { 'show': showPopup })}>
             <View className='select-header'>
               <View className='header-left'>
                 <View className='header-image'>
@@ -87,7 +98,7 @@ export default class Product extends Component {
                   </View>
                 </View>
               </View>
-              <View className='header-close-icon'>
+              <View className='header-close-icon' onClick={this.handleClose}>
                 <Image className='close' src={close}></Image>
                 <View className='get-seller-flow'>
                   {/* TODO: 字体图标*/}
@@ -197,7 +208,9 @@ export default class Product extends Component {
               </View>
             </View>
           </View>
-          <View className='mask'></View>
+          {
+            showPopup && <View className='mask'></View>
+          }
         </View>
       </View>
     )
