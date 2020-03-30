@@ -40,6 +40,7 @@ export default class Product extends Component<ProductProps, ProductState> {
 
   render() {
     let { showPopup } = this.state
+    let isSelect = true
     let sizeList = [
       {
         size: 35.5,
@@ -47,7 +48,8 @@ export default class Product extends Component<ProductProps, ProductState> {
       },
       {
         size: 36,
-        price: 1039
+        price: 1039,
+        isSelect: true
       },
       {
         size: 36.5,
@@ -127,13 +129,15 @@ export default class Product extends Component<ProductProps, ProductState> {
 
             <View className='select-container'>
               <View className='size-list-wrap'>
-
                 {
                   sizeList.map((item) => {
                     return (
-                      <View className='select-size-info'>
+                      <View 
+                        className={classNames('select-size-info', { 'isSelect': item.isSelect})}
+                        onClick={this.handleSelect}
+                      >
                         <View className='size'>{item.size}</View>
-                    <View className='size-price'>￥{item.price}</View>
+                        <View className='size-price'>￥{item.price}</View>
                       </View>
                     )
                   })
