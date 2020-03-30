@@ -32,7 +32,7 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     }
   }
 
-  toggleSelectSales = (selectSales: boolean) => {
+  toggleSales = (selectSales: boolean) => {
     const selectMap = this.state.selectMap
     this.setState({ selectMap: { ...selectMap, selectSales } })
   }
@@ -53,7 +53,7 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
         <SearchBox />
         <SearchFilters
           selectMap={selectMap}
-          toggleSelectSales={this.toggleSelectSales}
+          toggleSales={this.toggleSales}
           toggleSize={this.toggleSize}
         />
         {

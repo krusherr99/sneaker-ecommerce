@@ -10,16 +10,16 @@ import size_arrow from './size_arrow.png'
 import { ProductSearchResultState } from '../..';
 
 interface SearchBoxProps extends ProductSearchResultState {
-  toggleSelectSales: (selectSales: boolean) => void
+  toggleSales: (selectSales: boolean) => void
   toggleSize: (selectSize: boolean) => void
 }
 
 export default class SearchBox extends Component<SearchBoxProps> {
 
   toggleSales = () => {
-    const { toggleSelectSales } = this.props
+    const { toggleSales } = this.props
     console.log(this.props.selectMap.selectSales);
-    toggleSelectSales(!this.props.selectMap.selectSales)
+    toggleSales(!this.props.selectMap.selectSales)
   }
 
   toggleSize = () => {
