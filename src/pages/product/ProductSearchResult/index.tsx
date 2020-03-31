@@ -12,7 +12,16 @@ import { ITouchEvent } from '@tarojs/components/types/common';
 
 const sizeList = ["35.5", "36", "36.5", "37", "37.5", "38", "38.5", "39", "39.5", "40", "40.5", "41", "41.5", "42", "42.5", "43", "43.5", "44", "44.5", "45", "45.5", "46", "46.5", "47", "47.5", "48", "48.5", "全部"]
 
+const toggleFilterPriceUp = (filterPriceUp: FilterPriceUp): FilterPriceUp => {
+  switch (filterPriceUp) {
+    case -1: return 0;
+    case 0: return 1;
+    case 1: return 0
+  }
+}
+
 export type SortType = 1 | 2 | 3 | 4
+export type FilterPriceUp = -1 | 0 | 1
 export type SearchFilterTap = (sortType: SortType) => void
 
 interface ProductSearchResultProps { }
@@ -20,8 +29,13 @@ export interface ProductSearchResultState {
   sortType: SortType;
   selectSize: boolean;
   selectSizeString: string;
-  filterPriceUp: number;
+  filterPriceUp: FilterPriceUp;
 }
+
+// const defaultState: Partial<ProductSearchResultState> = {
+//   sortType: 1,
+//   filterPriceUp: -1
+// }
 
 export default class ProductSearchResult extends Component<ProductSearchResultProps, ProductSearchResultState> {
 
@@ -33,19 +47,23 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
   }
 
   searchFilterTap = (sortType: SortType) => {
-    let { selectSize } = this.state
+    let { selectSize, filterPriceUp } = this.state
+    sortType === 1 && (filterPriceUp = -1)
+    sortType === 2 && (filterPriceUp = toggleFilterPriceUp(filterPriceUp))
+    sortType === 3 && (filterPriceUp = -1)
     sortType === 4 && (selectSize = !selectSize)
-    this.setState({ sortType, selectSize })
+    console.log(filterPriceUp);
+    this.setState({ sortType, selectSize, filterPriceUp })
   }
 
-  selectSizeTap = (selectSize: string) => {
-    let state = this.state
-    state.selectSizeString = selectSize
-    this.setState(state)
+  selectSizeTap = (selectSizeString: string) => {
+    let { selectSize } = this.state
+    selectSize = !selectSize
+    this.setState({ selectSizeString, selectSize })
   }
 
   render() {
-    const {  selectSizeString, selectSize} = this.state
+    const { selectSizeString, selectSize } = this.state
     return (
       <View className='max-height'>
         <SearchBox />

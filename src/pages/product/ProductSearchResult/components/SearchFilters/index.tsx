@@ -5,12 +5,20 @@ import classNames from 'classnames';
 
 import './index.less'
 
-import price_arrow from './images/price_arrow.png'
+import price_arrow_none from './images/price_arrow_none.png'
+import price_arrow_up from './images/price_arrow_up.png'
+import price_arrow_down from './images/price_arrow_down.png'
 import size_arrow_up from './images/size_arrow_up.png'
 import size_arrow_down from './images/size_arrow_down.png'
 import { ProductSearchResultState, SearchFilterTap, SortType } from '../..';
 
-
+const togglePriceArrow = (filterPriceUp) => {
+  switch(filterPriceUp) {
+    case -1: return price_arrow_none;
+    case 0: return price_arrow_up;
+    case 1: return price_arrow_down
+  }
+}
 
 interface SearchBoxProps extends Partial<ProductSearchResultState> {
   searchFilterTap: SearchFilterTap
@@ -23,9 +31,10 @@ export default class SearchFilters extends Component<SearchBoxProps> {
   }
 
   render() {
-    let { sortType, selectSizeString, selectSize } = this.props
-    
+    let { sortType, selectSizeString, selectSize, filterPriceUp } = this.props
     let size_arrow = selectSize ? size_arrow_up : size_arrow_down
+    let price_arrow = togglePriceArrow(filterPriceUp)
+
     return (
       <View className='filters-info'>
         <View className='filter-border-view'>
