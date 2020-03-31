@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Image, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 
 import SearchBox from './components/SearchBox'
 import SearchFilters from './components/SearchFilters'
@@ -8,7 +8,6 @@ import HotList from '../../home/components/HotList/index';
 
 import './index.less'
 import classNames from 'classnames';
-import { ITouchEvent } from '@tarojs/components/types/common';
 
 const sizeList = ["35.5", "36", "36.5", "37", "37.5", "38", "38.5", "39", "39.5", "40", "40.5", "41", "41.5", "42", "42.5", "43", "43.5", "44", "44.5", "45", "45.5", "46", "46.5", "47", "47.5", "48", "48.5", "全部"]
 
@@ -32,11 +31,6 @@ export interface ProductSearchResultState {
   filterPriceUp: FilterPriceUp;
 }
 
-// const defaultState: Partial<ProductSearchResultState> = {
-//   sortType: 1,
-//   filterPriceUp: -1
-// }
-
 export default class ProductSearchResult extends Component<ProductSearchResultProps, ProductSearchResultState> {
 
   state: ProductSearchResultState = {
@@ -47,11 +41,15 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
   }
 
   searchFilterTap = (sortType: SortType) => {
-    let { selectSize, filterPriceUp } = this.state
+    let { selectSize, filterPriceUp  } = this.state
     sortType === 1 && (filterPriceUp = -1)
     sortType === 2 && (filterPriceUp = toggleFilterPriceUp(filterPriceUp))
     sortType === 3 && (filterPriceUp = -1)
-    sortType === 4 && (selectSize = !selectSize)
+    if(sortType === 4) {
+      this.setState({ selectSize: !selectSize })
+      return
+    }
+    // sortType === 4 && (selectSize = !selectSize) && (return)
     console.log(filterPriceUp);
     this.setState({ sortType, selectSize, filterPriceUp })
   }
