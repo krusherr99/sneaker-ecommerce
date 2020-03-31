@@ -5,20 +5,26 @@ import classNames from 'classnames';
 
 import './index.less'
 
-import price_arrow from './price_arrow.png'
-import size_arrow from './size_arrow.png'
+import price_arrow from './images/price_arrow.png'
+import size_arrow_up from './images/size_arrow_up.png'
+import size_arrow_down from './images/size_arrow_down.png'
 import { ProductSearchResultState } from '../..';
+
+
 
 interface SearchBoxProps extends ProductSearchResultState {
   toggleSales: (selectSales: boolean) => void
   toggleSize: (selectSize: boolean) => void
+  togglePrice: (selectSize: boolean) => void
+  toggleNew: (selectSize: boolean) => void
 }
 
-export default class SearchBox extends Component<SearchBoxProps> {
+export default class SearchFilters extends Component<SearchBoxProps> {
+
+  
 
   toggleSales = () => {
     const { toggleSales } = this.props
-    console.log(this.props.selectMap.selectSales);
     toggleSales(!this.props.selectMap.selectSales)
   }
 
@@ -27,20 +33,42 @@ export default class SearchBox extends Component<SearchBoxProps> {
     toggleSize(!this.props.selectMap.selectSize)
   }
 
+  togglePrice = () => {
+    const { togglePrice } = this.props
+    togglePrice(!this.props.selectMap.selectPrice)
+  }
+
+  toggleNew = () => {
+    const { toggleNew } = this.props
+    toggleNew(!this.props.selectMap.selectNew)
+  }
+
+
+  
+
   render() {
-    let { selectSales, selectNew, selectPrice, selectSize } = this.props.selectMap
+    let { selectMap: { selectSales, selectNew, selectPrice, selectSize }, selectSizeString } = this.props
+    let size_arrow = selectSize ? size_arrow_up : size_arrow_down
     return (
       <View className='filters-info'>
         <View className='filter-border-view'>
-          <View className='filter-view'>
+          <View className='filter-view' data-id={1}>
             <View className={classNames('sales-view', { 'select': selectSales })} onClick={this.toggleSales}>销量</View>
-            <View className='price-wrap'>
+            <View className='price-wrap' onClick={this.togglePrice}>
               <View className={classNames('price-view', { 'select': selectPrice })}>价格</View>
               <Image className='price-arrow' src={price_arrow}></Image>
             </View>
-            <View className={classNames('new-view', { 'select': selectNew })}>新品</View>
+            <View className={classNames('new-view', { 'select': selectNew })} onClick={this.toggleNew}>新品</View>
             <View className='size-wrap' onClick={this.toggleSize}>
-              <View className={classNames('size-view', { 'select': selectSize })}>尺码</View>
+              <View
+                className={classNames('size-view', { 'select': selectSizeString !== '全部' })}
+              >
+                {
+                  selectSizeString === '全部'
+                  ? '尺码'
+                  : selectSizeString
+                }
+              </View>
               <Image className='size-arrow' src={size_arrow}></Image>
             </View>
           </View>
