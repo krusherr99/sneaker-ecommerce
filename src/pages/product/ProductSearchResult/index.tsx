@@ -12,14 +12,13 @@ import { ITouchEvent } from '@tarojs/components/types/common';
 
 const sizeList = ["35.5", "36", "36.5", "37", "37.5", "38", "38.5", "39", "39.5", "40", "40.5", "41", "41.5", "42", "42.5", "43", "43.5", "44", "44.5", "45", "45.5", "46", "46.5", "47", "47.5", "48", "48.5", "全部"]
 
+export type SortType = 1 | 2 | 3 | 4
+export type SearchFilterTap = (sortType: SortType) => void
+
 interface ProductSearchResultProps { }
 export interface ProductSearchResultState {
-  selectMap: {
-    selectSales: boolean;
-    selectPrice: boolean;
-    selectNew: boolean;
-    selectSize: boolean;
-  },
+  sortType: SortType;
+  selectSize: boolean;
   selectSizeString: string;
   filterPriceUp: number;
 }
@@ -27,47 +26,16 @@ export interface ProductSearchResultState {
 export default class ProductSearchResult extends Component<ProductSearchResultProps, ProductSearchResultState> {
 
   state: ProductSearchResultState = {
-    selectMap: {
-      selectSales: false,
-      selectPrice: false,
-      selectNew: false,
-      selectSize: false
-    },
+    sortType: 1,
+    selectSize: false,
     selectSizeString: '全部',
     filterPriceUp: -1
   }
 
-  toggleSales = (selectSales: boolean) => {
-    const state = this.state
-    state.selectMap.selectPrice = false
-    state.selectMap.selectNew = false
-
-    state.selectMap.selectSales = selectSales
-    this.setState(state)
-  }
-
-  togglePrice = (selectPrice: boolean) => {
-    const state = this.state
-    state.selectMap.selectSales = false
-    state.selectMap.selectNew = false
-
-    state.selectMap.selectPrice = selectPrice
-    this.setState(state)
-  }
-
-  toggleNew = (selectNew: boolean) => {
-    const state = this.state
-    state.selectMap.selectSales = false
-    state.selectMap.selectPrice = false
-
-    state.selectMap.selectNew = selectNew
-    this.setState(state)
-  }
-
-  toggleSize = (selectSize: boolean) => {
-    const state = this.state
-    state.selectMap.selectSize = selectSize
-    this.setState(state)
+  searchFilterTap = (sortType: SortType) => {
+    let { selectSize } = this.state
+    sortType === 4 && (selectSize = !selectSize)
+    this.setState({ sortType, selectSize })
   }
 
   selectSizeTap = (selectSize: string) => {
@@ -77,19 +45,15 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
   }
 
   render() {
-    let { selectMap, selectSizeString } = this.state
-    let { selectSize } = selectMap
+    const {  selectSizeString, selectSize} = this.state
     return (
-
       <View className='max-height'>
         <SearchBox />
         <SearchFilters
-          selectMap={selectMap}
-          toggleSales={this.toggleSales}
-          toggleSize={this.toggleSize}
-          togglePrice={this.togglePrice}
-          toggleNew={this.toggleNew}
+          searchFilterTap={this.searchFilterTap}
           selectSizeString={selectSizeString}
+          sortType={this.state.sortType}
+          filterPriceUp={this.state.filterPriceUp}
         />
         {
           selectSize &&
