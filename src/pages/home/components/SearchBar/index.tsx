@@ -18,6 +18,12 @@ export default class SearchBar extends Component {
     })
   }
 
+  seriesTap = () => {
+    Taro.navigateTo({
+      url: '/pages/product/ProductCategory/index'
+    })
+  }
+
   render () {
     return (
       <View className='search-view'>
@@ -25,7 +31,7 @@ export default class SearchBar extends Component {
           <Icon type='search' size='14'></Icon>
           <View className='search-title'>搜索单品</View>
         </View>
-        <Image className='index-series' src={all}></Image>
+        <Image className='index-series' src={all} onClick={this.seriesTap}></Image>
       </View>
     )
   }

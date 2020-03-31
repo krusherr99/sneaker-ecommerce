@@ -1,17 +1,21 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text, Swiper, SwiperItem, Image } from '@tarojs/components'
+import { View, Button, Text, Swiper, SwiperItem, Image, ScrollView } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
-
+import { AtLoadMore } from 'taro-ui'
 import SearchBar from './components/SearchBar'
 import ScrollTitle from './components/ScrollTitle'
 import DeclarationBar from './components/DeclarationBar'
 import SeriesView from './components/SeriesView'
 
+
 import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.less'
 import HotList from './components/HotList'
+import LoadMore from '../../components/LoadMore'
+
+
 
 // #region 书写注意
 //
@@ -45,6 +49,85 @@ interface Index {
   props: IProps;
 }
 
+type Product = {
+  title: string;
+  price: number;
+  soldNumber: number
+}
+
+interface IndexProps {}
+export interface IndexState {
+  loading: boolean;
+  hasMore: boolean;
+  list: Product[]
+}
+
+const testList:Product[] = [
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+]
+const testListAdd:Product[] = [
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+  {
+    title: 'Air Jordan 11 康扣',
+    price: 2279,
+    soldNumber: 5957
+  },
+]
+
+
 @connect(({ counter }) => ({
   counter
 }), (dispatch) => ({
@@ -58,7 +141,7 @@ interface Index {
     dispatch(asyncAdd())
   }
 }))
-class Index extends Component {
+class Index extends Component<IndexProps, IndexState> {
 
   /**
  * 指定config的类型声明为: Taro.Config
@@ -71,42 +154,64 @@ class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps)
+  state: IndexState = {
+    loading: false,
+    hasMore: true,
+    list: []
   }
 
-  componentWillUnmount() { }
+  loadMore = () => {
+    let {list} = this.state
+    console.log('执行了这个方法');
+    this.setState({loading: true})
+    setTimeout(() => {
+      this.setState({list: list.concat(testListAdd)})
+      this.setState({ loading: false })
+    }, 1500)
+  }
 
-  componentDidShow() { }
-
-  componentDidHide() { }
+  componentDidMount() {
+    const list = testList
+    this.setState({ list })
+  }
 
   render() {
+    const { loading, hasMore, list } = this.state
     return (
       <View className='main'>
         <View className='fix-header'>
           <SearchBar />
           <ScrollTitle />
         </View>
-        <View className='content'>
-          <Swiper
-            className='swipper-container'
-            indicatorDots //是否显示面板指示点
-            indicatorActiveColor='#fff' // 选中的指示点颜色
-            indicatorColor='#a0d1d4' // 未选中的指示点颜色
-            autoplay
-          >
-            <SwiperItem>
-              <Image className='slide-image' src='https://du.hupucdn.com/news_byte381112byte_5cfb7dc89ccdac03f4750ce35fe02a7f_w900h300.png'></Image>
-            </SwiperItem>
-            <SwiperItem>
-              <Image className='slide-image' src='https://du.hupucdn.com/FlgI7w6eM2As2UKcFxOsDBLUw-10'></Image>
-            </SwiperItem>
-          </Swiper>
-          <DeclarationBar />
-          <SeriesView />
-          <HotList />
-        </View>
+        <ScrollView
+          scrollY
+          onScrollToLower={this.loadMore}
+          className='scroll-view'
+        >
+          <View className='content'>
+            <Swiper
+              className='swipper-container'
+              indicatorDots //是否显示面板指示点
+              indicatorActiveColor='#fff' // 选中的指示点颜色
+              indicatorColor='#a0d1d4' // 未选中的指示点颜色
+              autoplay
+            >
+              <SwiperItem>
+                <Image className='slide-image' src='https://du.hupucdn.com/news_byte381112byte_5cfb7dc89ccdac03f4750ce35fe02a7f_w900h300.png'></Image>
+              </SwiperItem>
+              <SwiperItem>
+                <Image className='slide-image' src='https://du.hupucdn.com/FlgI7w6eM2As2UKcFxOsDBLUw-10'></Image>
+              </SwiperItem>
+            </Swiper>
+            <DeclarationBar />
+            <SeriesView />
+            <HotList list={list} />
+          </View>
+          <LoadMore
+            loading={loading}
+            hasMore={hasMore}
+          />
+        </ScrollView>
       </View>
     )
   }

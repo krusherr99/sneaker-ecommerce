@@ -12,7 +12,7 @@ import './app.less'
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
-
+import 'taro-ui/dist/style/index.scss'
 const store = configStore()
 
 class App extends Component {
@@ -26,8 +26,9 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/product/ProductSearchResult/index',
+      'pages/product/ProductCategory/index',
       'pages/home/index',
+      'pages/product/ProductSearchResult/index',
       'pages/product/product',
       'pages/user/index',
     ],
