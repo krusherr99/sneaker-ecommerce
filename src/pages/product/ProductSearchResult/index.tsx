@@ -51,6 +51,7 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
         <SearchBox />
         <SearchFilters
           searchFilterTap={this.searchFilterTap}
+          selectSize={this.state.selectSize}
           selectSizeString={selectSizeString}
           sortType={this.state.sortType}
           filterPriceUp={this.state.filterPriceUp}

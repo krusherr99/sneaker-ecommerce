@@ -23,9 +23,9 @@ export default class SearchFilters extends Component<SearchBoxProps> {
   }
 
   render() {
-    let { sortType, selectSizeString } = this.props
+    let { sortType, selectSizeString, selectSize } = this.props
     
-    let size_arrow = sortType === 4 ? size_arrow_up : size_arrow_down
+    let size_arrow = selectSize ? size_arrow_up : size_arrow_down
     return (
       <View className='filters-info'>
         <View className='filter-border-view'>
