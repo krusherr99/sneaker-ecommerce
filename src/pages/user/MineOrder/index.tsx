@@ -6,6 +6,12 @@ import order_icon from './order_icon.png'
 import right_icon from './right_icon.png'
 export default class MineOrder extends Component {
 
+  selectAllOrderTap = () => {
+    Taro.navigateTo({
+      url: '/pages/order/index'
+    })
+  }
+
   render () {
     return (
       <View className='mine-order'>
@@ -14,7 +20,7 @@ export default class MineOrder extends Component {
             <Image className='order-icon' src={order_icon}></Image>
             <Label className='title'>购买</Label>
           </View>
-          <View className='all-order-entry'>
+          <View className='all-order-entry' onClick={this.selectAllOrderTap}>
             <View className='all-order'>全部订单</View>
             <Image className='right-icon' src={right_icon}></Image>
           </View>
