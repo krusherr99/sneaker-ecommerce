@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 
-import Index from './pages/home/index'
+import Index from './pages/index/index'
 
 import configStore from './store'
 
@@ -30,17 +30,22 @@ class App extends Component {
       // 'pages/product/ProductCategory/index',
       // 'pages/product/ProductSearchResult/index',
       // 'pages/product/product',
-      'pages/home/index',
-      'pages/order/index',
-      'pages/user/index',
+      'pages/index/index',
+      'pages/tabmine/index',
     ],
     "subPackages": [
       {
-        "root": 'packageA',
+        "root": 'product',
         "pages": [
-          'product/ProductCategory/index',
-          'product/ProductSearchResult/index',
-          'product/product'
+          'ProductCategory/index',
+          'ProductSearchResult/index',
+          'product'
+        ]
+      },
+      {
+        "root": 'order',
+        "pages": [
+          'index'
         ]
       }
     ],
@@ -58,19 +63,19 @@ class App extends Component {
       backgroundColor: '#f8f9fb',
       list: [
         {
-        pagePath: 'pages/home/index',
+        pagePath: 'pages/index/index',
         text: '购买',
         iconPath: 'static/images/barnner1@3x.png',
         selectedIconPath: 'static/images/ic_tab_mall_selected.png',
       },
       {
-        "pagePath": "pages/home/index",
+        "pagePath": "pages/index/index",
         "text": " 购物车",
         "iconPath": "static/images/ic_tab_service_gray.png",
         "selectedIconPath": "static/images/ic_tab_service_selected.png"
       },
       {
-        pagePath: 'pages/user/index',
+        pagePath: 'pages/tabmine/index',
         text: '我',
         iconPath: 'static/images/ic_tab_user_nor.png',
         selectedIconPath: 'static/images/ic_tab_user_sel.png',

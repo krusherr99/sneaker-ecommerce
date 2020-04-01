@@ -8,7 +8,7 @@ export default class MineOrder extends Component {
 
   selectAllOrderTap = () => {
     Taro.navigateTo({
-      url: '/pages/order/index'
+      url: '/order/index'
     })
   }
 

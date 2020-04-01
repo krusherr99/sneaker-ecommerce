@@ -14,13 +14,13 @@ export default class SearchBar extends Component {
 
   handleSearchClick = () => {
     Taro.navigateTo({
-      url: '/pages/product/ProductSearchResult/index'
+      url: '/product/ProductSearchResult/index'
     })
   }
 
   seriesTap = () => {
     Taro.navigateTo({
-      url: '/pages/product/ProductCategory/index'
+      url: '/product/ProductCategory/index'
     })
   }
 

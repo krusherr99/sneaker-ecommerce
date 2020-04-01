@@ -1,9 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Image, Text } from '@tarojs/components'
+import { View, Image} from '@tarojs/components'
 
 import './index.less'
 
-import header from './images/header.png'
+
 
 
 
@@ -12,7 +12,7 @@ export default class ProductDetail extends Component {
     return (
       <View className='product-detail'>
         <View className='ad'>
-          <Image src={header} />
+          <Image src="https://cdn.poizon.com/node-common/JUU5JTg5JUI0JUU1JTg4JUFCJUU1JTkzJTgxJUU1JUFFJUEzQDN4.png?x-oss-process=image/resize,w_1080" />
         </View>
         <View className='detail-extra'>
           <View className='wrap-title'>参数</View>

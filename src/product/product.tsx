@@ -2,12 +2,10 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Image, Swiper, SwiperItem, Text } from '@tarojs/components'
 import classNames from 'classnames'
 
-import CustomNavigation from '../../components/CustomNavigation'
+import CustomNavigation from '../components/CustomNavigation'
 
-import product1 from './images/product1.jpg'
-import product2 from './images/product2.jpg'
+
 import right from './images/right.png'
-import select from './images/select.jpg'
 import small_icon from './images/small_icon.png'
 import close from './images/close.png'
 import './product.less'
@@ -90,10 +88,13 @@ export default class Product extends Component<ProductProps, ProductState> {
               indicatorDots={true}
             >
               <SwiperItem className='swiperItem-container'>
-                <Image className='min-header-image' src={product1}></Image>
+                <Image className='min-header-image' src="https://du.hupucdn.com/FlCpOh0H4ssWxdwLz1aUztdRV2vg"></Image>
               </SwiperItem>
               <SwiperItem className='swiperItem-container'>
-                <Image className='min-header-image' src={product2}></Image>
+                <Image className='min-header-image' src="https://du.hupucdn.com/Fs14PhHt0m0MkvKgXaCLegMuF5N9"></Image>
+              </SwiperItem>
+              <SwiperItem className='swiperItem-container'>
+                <Image className='min-header-image' src="https://du.hupucdn.com/Ft9PRazzVOka2oURkIgAFjQQHh6I"></Image>
               </SwiperItem>
             </Swiper>
             <View className='product-title'>
@@ -125,7 +126,7 @@ export default class Product extends Component<ProductProps, ProductState> {
             <View className='select-header'>
               <View className='header-left'>
                 <View className='header-image'>
-                  <Image src={select}></Image>
+                  <Image src="https://du.hupucdn.com/FlCpOh0H4ssWxdwLz1aUztdRV2vg"></Image>
                 </View>
                 <View className='header-info'>
                   <View className='price'>

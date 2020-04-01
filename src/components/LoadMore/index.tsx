@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 
 import './index.less'
 import { View, Text } from '@tarojs/components'
-import { IndexState } from 'src/pages/home'
+import { IndexState } from 'src/pages/index'
 
 interface LoadMoreProps extends Partial<IndexState> {}
 

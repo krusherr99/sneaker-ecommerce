@@ -10,7 +10,7 @@ interface HotListProps extends Partial<IndexState> { }
 export default class HotList extends Component<HotListProps> {
   handleClick = () => {
     Taro.navigateTo({
-      url: '/packageA/product/product'
+      url: '/product/product'
     })
   }
 
