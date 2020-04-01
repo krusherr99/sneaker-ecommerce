@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 
 import './index.less'
-import { View } from '@tarojs/components'
+import { View, Icon } from '@tarojs/components'
 
 import CategoryType from '../components/CategoryType'
 import CategoryContent from '../components/CategoryContent'
@@ -25,7 +25,12 @@ export default class ProductCategory extends Component<ProductCategoryProps, Pro
     const { catId } = this.state
     return (
       <View>
-        <View className='search-header' style={{ width: '100%', height: '44px', textAlign: 'center', background: '#eeeef3' }}>这里是搜索栏</View>
+        <View className='search-header'>
+          <View className='input-wrapper'>
+            <Icon type='search' size='14' />
+            <View className='search-input'>搜索商品</View>
+          </View>
+        </View>
         <View className='scroll-view'>
           <CategoryType
             selectCategoryTap={this.selectCategoryTap}

@@ -3,12 +3,12 @@ import { View, Image } from '@tarojs/components'
 
 import MineOrder from './MineOrder'
 
-import avatar from './avatar.png'
-import item1 from './item1.png'
-import item2 from './item2.png'
-import item3 from './item3.png'
-import item4 from './item4.png'
-import right_icon from './right_icon.png'
+import avatar from './images/avatar.png'
+import item1 from './images/item1.png'
+import item2 from './images/item2.png'
+import item3 from './images/item3.png'
+import item4 from './images/item4.png'
+import right_icon from './images/right_icon.png'
 import './index.less'
 
 export default class SearchBar extends Component {
