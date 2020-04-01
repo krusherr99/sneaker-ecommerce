@@ -22,7 +22,7 @@ export default class CustomNavigation extends Component {
       <View>
         <View className='inaver'>
           <View className='left'>
-            <View onClick={(e) => { console.log('点击了'); }}>
+            <View onClick={(e) => { console.log('点击了aa'); }}>
               <Image className='icon' src={back}></Image>
             </View>
             <View className='line'></View>

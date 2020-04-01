@@ -3,9 +3,10 @@ import './index.less'
 import { View, ScrollView } from '@tarojs/components'
 import catList from './data'
 import classNames from 'classnames';
+import { ProductCategoryState } from '../../ProductCategory';
 
 
-interface CategoryTypeProps {
+interface CategoryTypeProps extends ProductCategoryState {
   selectCategoryTap: (catId: number) => any
 }
 
@@ -13,11 +14,11 @@ interface CategoryTypeProps {
 export default class CategoryType extends Component<CategoryTypeProps> {
 
   selectLeftTap = (catId) => {
-    console.log('点击了', catId);
+    this.props.selectCategoryTap(catId)
   }
 
   render() {
-    const { selectCategoryTap } = this.props
+    const { catId } = this.props
     return (
       <ScrollView 
         className='left-scroll-view'  
@@ -27,8 +28,8 @@ export default class CategoryType extends Component<CategoryTypeProps> {
           {
             catList.map((cat) => {
               return (
-                <View className='left-item' onClick={selectCategoryTap(cat.catId)}>
-                  <View className={classNames('item-container', {'select-container': cat.catName === '品牌'})}>{cat.catName}</View>
+                <View className='left-item' onClick={this.selectLeftTap.bind(this, cat.catId)}>
+                  <View className={classNames('item-container', {'select-container': cat.catId === catId})}>{cat.catName}</View>
                   <View className='bottem-line'></View>
                 </View>
               )
