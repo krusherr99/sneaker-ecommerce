@@ -13,10 +13,8 @@ interface CategoryTypeProps extends ProductCategoryState {
 
 export default class CategoryType extends Component<CategoryTypeProps> {
 
-  selectLeftTap = (catId) => {
-    this.props.selectCategoryTap(catId)
-  }
-
+  selectLeftTap = this.props.selectCategoryTap
+  
   render() {
     const { catId } = this.props
     return (
