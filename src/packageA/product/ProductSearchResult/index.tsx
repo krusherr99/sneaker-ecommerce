@@ -4,7 +4,7 @@ import { View } from '@tarojs/components'
 import SearchBox from './components/SearchBox'
 import SearchFilters from './components/SearchFilters'
 // import SearchList from './components/SearchList'
-import HotList from '../../home/components/HotList/index';
+// import HotList from '../../home/components/HotList/index';
 
 import './index.less'
 import classNames from 'classnames';
@@ -95,7 +95,7 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
           </View>
         }
         <View style={{ marginTop: '-8px' }}>
-          <HotList />
+          {/* <HotList /> */}
         </View>
         {/* <SearchList /> */}
       </View>

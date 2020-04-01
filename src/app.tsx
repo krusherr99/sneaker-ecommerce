@@ -30,9 +30,9 @@ class App extends Component {
       // 'pages/product/ProductCategory/index',
       // 'pages/product/ProductSearchResult/index',
       // 'pages/product/product',
+      'pages/home/index',
       'pages/order/index',
       'pages/user/index',
-      'pages/home/index',
     ],
     "subPackages": [
       {

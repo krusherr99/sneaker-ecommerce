@@ -3,44 +3,44 @@ import Taro, { Component } from '@tarojs/taro'
 import './index.less'
 import { View, Image } from '@tarojs/components'
 
-import item from './images/item.png'
-import all from './images/all.jpg'
+
 
 export default class SeriesView extends Component {
 
   render () {
     return (
       <View className='series-view'>
+
         <View className='series-cell'>
-          <Image className='series-image' src={item}></Image>
+          <Image className='series-image' src="https://du.hupucdn.com/FlZa3-nNNkiM8uqQzqLL-mdSJFAR"></Image>
           <View className='series-text'>Air Jordan</View>
         </View>
         <View className='series-cell'>
-          <Image className='series-image' src={item}></Image>
+          <Image className='series-image' src="https://du.hupucdn.com/FlZa3-nNNkiM8uqQzqLL-mdSJFAR"></Image>
           <View className='series-text'>Air Jordan</View>
         </View>
         <View className='series-cell'>
-          <Image className='series-image' src={item}></Image>
+          <Image className='series-image' src="https://du.hupucdn.com/FlZa3-nNNkiM8uqQzqLL-mdSJFAR"></Image>
           <View className='series-text'>Air Jordan</View>
         </View>
         <View className='series-cell'>
-          <Image className='series-image' src={item}></Image>
+          <Image className='series-image' src="https://du.hupucdn.com/FlZa3-nNNkiM8uqQzqLL-mdSJFAR"></Image>
           <View className='series-text'>Air Jordan</View>
         </View>
         <View className='series-cell'>
-          <Image className='series-image' src={item}></Image>
+          <Image className='series-image' src="https://du.hupucdn.com/FlZa3-nNNkiM8uqQzqLL-mdSJFAR"></Image>
           <View className='series-text'>Air Jordan</View>
         </View>
         <View className='series-cell'>
-          <Image className='series-image' src={item}></Image>
+          <Image className='series-image' src="https://du.hupucdn.com/FlZa3-nNNkiM8uqQzqLL-mdSJFAR"></Image>
           <View className='series-text'>Air Jordan</View>
         </View>
         <View className='series-cell'>
-          <Image className='series-image' src={item}></Image>
+          <Image className='series-image' src="https://du.hupucdn.com/FlZa3-nNNkiM8uqQzqLL-mdSJFAR"></Image>
           <View className='series-text'>Air Jordan</View>
         </View>
         <View className='series-cell'>
-          <Image className='series-image' src={all}></Image>
+          <Image className='series-image' src="https://du.hupucdn.com/FjlALMBZuyhs57HvYbuyZdGCdMD9"></Image>
           <View className='series-text'>全部</View>
         </View>
       </View>

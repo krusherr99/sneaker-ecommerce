@@ -48,7 +48,7 @@ export default class Order extends Component {
                   <View className='order-size'>40 数量x1</View>
                   <View className='price-wrapper'>
                     <Image src={small_icon}></Image>
-                    <Text className='order-price'>￥2619</Text>
+                    <View className='order-price'>￥2619</View>
                   </View>
                 </View>
             </View>

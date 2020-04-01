@@ -4,13 +4,6 @@ import { View, Image, Text } from '@tarojs/components'
 import './index.less'
 
 import header from './images/header.png'
-import sneaker_story from './images/sneaker_story.png'
-import pic1 from './images/pic1.jpg'
-import pic2 from './images/pic2.jpg'
-import pic3 from './images/pic3.jpg'
-import pic4 from './images/pic4.jpg'
-import pic5 from './images/pic5.jpg'
-import history from './images/history.png'
 
 
 
@@ -41,12 +34,12 @@ export default class ProductDetail extends Component {
           </View>
         </View>
         <View className='wrap'>
-          <Image src={sneaker_story} style={{ height: '38.5px' }} />
-          <Image src={pic1} style={{ height: '202px' }} />
-          <Image src={history} style={{ height: '148.958px' }} />
-          <Image src={pic2} style={{ height: '202px' }} />
-          <Image src={pic3} style={{ height: '202px' }} />
-          <Image src={pic4} style={{ height: '202px' }} />
+          <Image src="https://du.hupucdn.com/a7a416b816b786650e0b412bf05ec4b5.png?imageView2/2/w/1080" style={{ height: '38.5px' }} />
+          <Image src="https://du.hupucdn.com/8b8046b7c7257d89724ba506419f9666.jpg?imageView2/2/w/1080" style={{ height: '202px' }} />
+          <Image src="https://china-product.poizon.com/spu-27372-history-7-450956.png?x-oss-process=image/resize,w_1080" style={{ height: '148.958px' }} />
+          <Image src="https://du.hupucdn.com/4df07896cca08e4d21f37374adb19e76.jpg?imageView2/2/w/1080" style={{ height: '202px' }} />
+          <Image src="https://du.hupucdn.com/7be5799c55aaa9df78594a5b37418d49.jpg?imageView2/2/w/1080" style={{ height: '202px' }} />
+          <Image src="https://du.hupucdn.com/97f9849fad1f8cc67be2010847c13d3c.jpg?imageView2/2/w/1080" style={{ height: '202px' }} />
         </View>
       </View>
     )
