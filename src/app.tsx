@@ -26,12 +26,23 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/home/index',
-      'pages/product/ProductCategory/index',
-      'pages/product/ProductSearchResult/index',
-      'pages/product/product',
-      'pages/user/index',
+      
+      // 'pages/product/ProductCategory/index',
+      // 'pages/product/ProductSearchResult/index',
+      // 'pages/product/product',
       'pages/order/index',
+      'pages/user/index',
+      'pages/home/index',
+    ],
+    "subPackages": [
+      {
+        "root": 'packageA',
+        "pages": [
+          'product/ProductCategory/index',
+          'product/ProductSearchResult/index',
+          'product/product'
+        ]
+      }
     ],
     window: {
       backgroundTextStyle: 'light',
