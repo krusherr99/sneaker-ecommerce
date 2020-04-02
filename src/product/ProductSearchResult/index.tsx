@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 
 import SearchBox from './components/SearchBox'
 import SearchFilters from './components/SearchFilters'
-// import SearchList from './components/SearchList'
+import SearchList from './components/SearchList'
 // import HotList from '../../home/components/HotList/index';
 
 import './index.less'
@@ -41,11 +41,11 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
   }
 
   searchFilterTap = (sortType: SortType) => {
-    let { selectSize, filterPriceUp  } = this.state
+    let { selectSize, filterPriceUp } = this.state
     sortType === 1 && (filterPriceUp = -1)
     sortType === 2 && (filterPriceUp = toggleFilterPriceUp(filterPriceUp))
     sortType === 3 && (filterPriceUp = -1)
-    if(sortType === 4) {
+    if (sortType === 4) {
       this.setState({ selectSize: !selectSize })
       return
     }
@@ -97,7 +97,7 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
         <View style={{ marginTop: '-8px' }}>
           {/* <HotList /> */}
         </View>
-        {/* <SearchList /> */}
+        <SearchList />
       </View>
     )
   }

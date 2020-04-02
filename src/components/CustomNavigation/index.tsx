@@ -9,24 +9,28 @@ import { ITouchEvent } from '@tarojs/components/types/common'
 
 export default class CustomNavigation extends Component {
 
-  // handleNavigateBack = () => {
-  //   console.log("left点击了");
-  // }
+  handleNavigateBack = () => {
+    console.log("left点击了");
+  }
 
-  test = (e: ITouchEvent) => {
+  handleNavigateHome = () => {
     console.log('back icon点击了');
+  }
+
+  handleClick = () => {
+    console.log('点击了整个按钮');
   }
 
   render() {
     return (
       <View>
-        <View className='inaver'>
+        <View className='inaver' onClick={this.handleClick}>
           <View className='left'>
-            <View onClick={(e) => { console.log('点击了aa'); }}>
+            <View onClick={this.handleNavigateBack}>
               <Image className='icon' src={back}></Image>
             </View>
             <View className='line'></View>
-            <View>
+            <View onClick={this.handleNavigateHome}>
               <Image className='icon' src={home}></Image>
             </View>
           </View>

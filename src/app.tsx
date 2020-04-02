@@ -29,7 +29,7 @@ class App extends Component {
       
       // 'pages/product/ProductCategory/index',
       // 'pages/product/ProductSearchResult/index',
-      // 'pages/product/product',
+      // 'pages/product/product'a,
       'pages/index/index',
       'pages/tabmine/index',
     ],
