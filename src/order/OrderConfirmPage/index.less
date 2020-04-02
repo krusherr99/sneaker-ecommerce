@@ -1,0 +1,47 @@
+.address-info-container {
+  padding: 32px 40px;
+  display: flex;
+  background-color: #fff;
+  .location {
+    width: 48px;
+    height: 48px;
+    margin-top: -4px;
+    margin-right: 8px;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    .user {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      font-size: 28px;
+      line-height: 36px;
+      font-weight: bold;
+      .name {
+        flex: 1;
+        font-family: PingFangSC-Semibold;
+        color: rgba(0,0,0,0.9);
+      }
+      .mobile {
+        font-family: PingFangSC-Medium;
+        color: #000;
+      }
+      .arrow {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        margin-top: 4px;
+      }
+    }
+    .address {
+      font-family: PingFangSC-Regular;
+      font-size: 26rpx;
+      color: rgba(0,0,0,0.5);
+      line-height: 34rpx;
+    }
+  }
+  
+}

@@ -7,9 +7,15 @@ import item1 from '../../../../static/images/CombinedShape@3x.png'
 
 export default class DeclarationBar extends Component {
 
+  testNavigateTo = () => {
+    Taro.navigateTo({
+      url: '/order/OrderConfirmPage/index'
+    })
+  }
+
   render () {
     return (
-      <View className='declaration'>
+      <View className='declaration'  onClick={this.testNavigateTo}>
         <View className='declaration-item'>
           <Image className='declaration-image' src={item1}></Image>
           正品保障

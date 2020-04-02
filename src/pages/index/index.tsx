@@ -55,14 +55,14 @@ type Product = {
   soldNumber: number
 }
 
-interface IndexProps {}
+interface IndexProps { }
 export interface IndexState {
   loading: boolean;
   hasMore: boolean;
   list: Product[]
 }
 
-const testList:Product[] = [
+const testList: Product[] = [
   {
     title: 'Air Jordan 11 康扣',
     price: 2279,
@@ -84,7 +84,7 @@ const testList:Product[] = [
     soldNumber: 5957
   },
 ]
-const testListAdd:Product[] = [
+const testListAdd: Product[] = [
   {
     title: 'Air Jordan 11 康扣',
     price: 2279,
@@ -161,19 +161,27 @@ class Index extends Component<IndexProps, IndexState> {
   }
 
   loadMore = () => {
-    let {list} = this.state
-    console.log('执行了这个方法');
-    this.setState({loading: true})
+    let { list } = this.state
+    this.setState({ loading: true })
     setTimeout(() => {
-      this.setState({list: list.concat(testListAdd)})
+      this.setState({ list: list.concat(testListAdd) })
       this.setState({ loading: false })
     }, 1500)
+  }
+
+  componentWillMount() {
+    Taro.redirectTo({
+      url: '/order/OrderConfirmPage/index'
+    })
   }
 
   componentDidMount() {
     const list = testList
     this.setState({ list })
   }
+
+  
+
 
   render() {
     const { loading, hasMore, list } = this.state
