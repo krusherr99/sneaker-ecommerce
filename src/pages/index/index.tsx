@@ -171,7 +171,7 @@ class Index extends Component<IndexProps, IndexState> {
 
   componentWillMount() {
     Taro.redirectTo({
-      url: '/order/OrderConfirmPage/index'
+      url: '/order/buyer/OrderDetail/index'
     })
   }
 

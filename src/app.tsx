@@ -46,7 +46,8 @@ class App extends Component {
         "root": 'order',
         "pages": [
           'index',
-          'OrderConfirmPage/index'
+          'OrderConfirmPage/index',
+          'buyer/OrderDetail/index'
         ]
       }
     ],
