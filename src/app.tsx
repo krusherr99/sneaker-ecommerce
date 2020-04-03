@@ -49,6 +49,12 @@ class App extends Component {
           'OrderConfirmPage/index',
           'buyer/OrderDetail/index'
         ]
+      },
+      {
+        "root": "account",
+        "pages": [
+          'ShippingAddressPage/index'
+        ]
       }
     ],
     window: {

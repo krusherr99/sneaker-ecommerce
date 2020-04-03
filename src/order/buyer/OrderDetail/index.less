@@ -1,0 +1,228 @@
+page {
+  background: #f5f5f9;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.status-area-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 48rpx 40rpx;
+  background: #2b2c3c;
+  .status-text-view {
+    display: flex;
+    flex-direction: column;
+    .status-text {
+      font-family: PingFang-SC-Semibold;
+      font-size: 36rpx;
+      line-height: 44rpx;
+      color: #F5F5F9;
+    }
+    .status-sub-text {
+      margin-top: 8rpx;
+      font-family: PingFang-SC-Light;
+      font-size: 24rpx;
+      line-height: 32rpx;
+      color: #F5F5F9;
+    }
+  }
+  .time-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .time-clock-text {
+      font-family: HelveticaNeue-CondensedBold;
+      font-size: 38rpx;
+      color: #ffffff;
+    }
+    .time-text {
+      font-family: PingFang-SC-Light;
+      font-size: 22rpx;
+      color: #ffffff;
+    }
+  }
+}
+.address-view {
+  display: flex;
+  background-color: #ffffff;
+  flex-direction: row;
+  padding: 32rpx 40rpx;
+  .address-icon {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    width: 48rpx;
+    height: 48rpx;
+    margin-top: -4rpx;
+  }
+  .name-phone-detail-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-left: 8rpx; 
+    .name-phone-text {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-family: PingFang-SC-Medium;
+      font-size: 28rpx;
+      line-height: 36rpx;
+      color: rgba(0,0,0,0.9);
+    }
+    .address-detail-text {
+      margin-top: 24rpx;
+      font-family: PingFangSC-Regular;
+      font-size: 26rpx;
+      color: rgba(0,0,0,0.5);
+      line-height: 34rpx;
+    }
+  }
+}
+.payment-detail-container {
+  padding: 32rpx 40rpx;
+  background-color: #fff;
+  .item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    .title {
+      font-family: PingFangSC-Regular;
+      font-size: 26rpx;
+      line-height: 34rpx;
+      color: #5a5f6d;
+    }
+    .price {
+      font-family: PingFangSC-Regular;
+      font-size: 28rpx;
+      color: #14151A;
+      line-height: 36rpx;
+      .symbol {
+        margin-right: 4rpx;
+        font-size: 26rpx;
+        line-height: 34rpx;
+      }
+  }
+  }
+  .item:not(:first-child) {
+    margin-top: 34rpx;
+  }
+}
+.payment-total-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: #fff;
+  padding: 0 40rpx 38rpx;
+  .layble {
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    line-height: 34rpx;
+    color: #5a5f6d;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    font-family: HelveticaNeue-CondensedBold;
+    color: #000;
+    .symbol {
+      font-size: 28rpx;
+      line-height: 36rpx;
+      margin-right: 5rpx;
+      .sum {
+      font-size: 40rpx;
+      line-height: 48rpx;
+      }
+    }
+  }
+}
+.order-info-view {
+  padding: 30rpx 30rpx 30rpx 30rpx;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  .list-row-between-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    .order-info-text,.order-info-sub-text {
+      font-family: PingFangSC-Regular;
+      font-size: 26rpx;
+      line-height: 34rpx;
+      color: #5A5F6D;
+    }
+    .order-info-sub-text {
+      -webkit-box-flex: 1;
+      flex: 1;
+      text-align: right;
+    }
+    .order-no-copy {
+      width: 64rpx;
+      height: 32rpx;
+      margin-left: 16rpx;
+      font-family: PingFangSC-Light;
+      font-size: 20rpx;
+      text-align: center;
+      color: #5A5F6D;
+      border: 1rpx solid #5A5F6D;
+    }
+  }
+}
+.bottom-space {
+  width: 100%;
+  height: 120rpx;
+  background-color: #f5f5f9;
+}
+.fix-bottom-view {
+  position: fixed;
+  bottom: 0rpx;
+  height: 120rpx;
+  width: 100%;
+  background: #ffffff;
+  flex-grow: 1;
+  box-shadow: inset 0 2rpx 0 0 #F1F1F5;
+  .bottom-view {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .kf-buton {
+      padding: 0;
+      font-family: PingFangSC-Medium;
+      font-size: 28rpx;
+      color: #01c2c3;
+      text-align: center;
+      background-color: #ffffff;
+    }
+    .button-list {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-right: 30rpx;
+      height: 100%;
+      .oper-button {
+        width: 198rpx;
+        margin-left: 28rpx;
+        font-family: PingFang-SC-Regular;
+        font-size: 30rpx;
+        line-height: 78rpx;
+        color: #626774;
+        text-align: center;
+        border: 1rpx solid #C7C7D7;
+        border-radius: 3rpx;
+      }
+    }
+    .button-list>View:last-child {
+      line-height: 78rpx;
+      color: #fff;
+      background: #01c2c3;
+      border: none;
+    }
+  }
+}
+

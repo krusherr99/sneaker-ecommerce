@@ -171,7 +171,7 @@ class Index extends Component<IndexProps, IndexState> {
 
   componentWillMount() {
     Taro.redirectTo({
-      url: '/order/buyer/OrderDetail/index'
+      url: '/account/ShippingAddressPage/index'
     })
   }
 
@@ -179,9 +179,6 @@ class Index extends Component<IndexProps, IndexState> {
     const list = testList
     this.setState({ list })
   }
-
-  
-
 
   render() {
     const { loading, hasMore, list } = this.state
