@@ -81,12 +81,13 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
         {/* <SearchWrap /> */}
 
         {
-          searchWordList.length > 0
-          &&
           searchWordList.map(item => {
             console.log('执行到这儿了')
             return (
-              <View>测试一下</View>
+              <View className="search-list" >
+                <View className="list-cell">{item.word}</View>
+                <View className="list-line"></View>
+              </View>
             )
           })
         }

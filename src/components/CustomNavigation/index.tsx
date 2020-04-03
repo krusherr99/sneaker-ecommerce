@@ -24,7 +24,7 @@ export default class CustomNavigation extends Component {
   render() {
     return (
       <View>
-        <View className='inaver' onClick={this.handleClick}>
+        <View className='inaver'>
           <View className='left'>
             <View onClick={this.handleNavigateBack}>
               <Image className='icon' src={back}></Image>
