@@ -10,6 +10,7 @@ import item3 from './images/item3.png'
 import item4 from './images/item4.png'
 import right_icon from './images/right_icon.png'
 import './index.less'
+const item5 = 'https://cdn.poizon.com/node-common/JUU1JUFFJUEyJUU2JTlDJThEQDJ4MTU4MjUyNTczNTk4MA==.png'
 
 export default class SearchBar extends Component {
 
@@ -43,6 +44,12 @@ export default class SearchBar extends Component {
           <View className='container-item'>
             <Image src={item4}></Image>
             <View className='title'>消息通知</View>
+            <Image src={right_icon}></Image>
+          </View>
+
+          <View className='container-item'>
+            <Image src={item5}></Image>
+            <View className='title'>客服中心</View>
             <Image src={right_icon}></Image>
           </View>
         </View>

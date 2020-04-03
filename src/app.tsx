@@ -30,6 +30,7 @@ class App extends Component {
       // 'pages/product/ProductCategory/index',
       // 'pages/product/ProductSearchResult/index',
       // 'pages/product/product'a,
+      // 'pages/test/index',
       'pages/index/index',
       'pages/tabmine/index',
     ],
@@ -53,14 +54,15 @@ class App extends Component {
       {
         "root": "account",
         "pages": [
-          'ShippingAddressPage/index'
+          'ShippingAddressPage/index',
+          'AddressEditPage/index'
         ]
       }
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#F8F8F8',
-      navigationBarTitleText: '得物app',
+      navigationBarTitleText: '搜索',
       navigationBarTextStyle: 'black'
     },
     tabBar: {
