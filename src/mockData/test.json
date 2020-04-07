@@ -1,0 +1,892 @@
+{
+  "data": {
+    "detail": {
+      "spuId": 26850,
+      "isSelf": 0,
+      "categoryId": 31,
+      "level1CategoryId": 29,
+      "level2CategoryId": 30,
+      "brandId": 13,
+      "relationBrandIds": [],
+      "preSellStatus": 0,
+      "logoUrl": "https://du.hupucdn.com/FlCpOh0H4ssWxdwLz1aUztdRV2vg",
+      "title": "Air Jordan 1 Low“Black Toe” 黑脚趾 低帮 黑红白 篮球鞋 553558-116",
+      "subTitle": "",
+      "desc": "",
+      "authPrice": 799,
+      "sellDate": "2019.04.01",
+      "sourceName": "",
+      "articleNumber": "553558-116",
+      "articleNumbers": [],
+      "preSellDeliverTime": 3024000,
+      "preSellLimitPurchase": 1,
+      "isShowPreSellTag": 0,
+      "isPreSellNew": 0,
+      "isShow": 1,
+      "crossStatus": 1,
+      "isShowCrossTag": 0,
+      "fitId": 1,
+      "defaultSkuId": 161094565,
+      "goodsType": 0
+    },
+    "image": {
+      "spuImage": {
+        "threeDimension": {
+          "objFileUrl": "http://luna-public.poizon.com/du_obj/rebuildpkg/20191230/2adcdb55d22c5e0a4249d726bde7515d.zip?key=du3D2019c68fa52e",
+          "coverUrl": "https://cdn.poizon.com/node-common/aW1hZ2VzMTU4NDEwNjg0MzIzOQ==.png",
+          "gifUrl": "https://cdn.poizon.com/node-common/bW9kZWwxNTg0MTA2ODQ2MDQ0.gif",
+          "key": "c68fa52e"
+        },
+        "images": [
+          {
+            "propertyValueId": 0,
+            "url": "https://china-product.poizon.com/FlCpOh0H4ssWxdwLz1aUztdRV2vgnew.png"
+          },
+          {
+            "propertyValueId": 0,
+            "url": "https://china-product.poizon.com/Fs14PhHt0m0MkvKgXaCLegMuF5N9new.png"
+          },
+          {
+            "propertyValueId": 0,
+            "url": "https://china-product.poizon.com/Ft9PRazzVOka2oURkIgAFjQQHh6Inew.png"
+          },
+          {
+            "propertyValueId": 0,
+            "url": "https://china-product.poizon.com/Fh5SwT12Wh5f_rydIfXysKKu_Qtfnew.png"
+          },
+          {
+            "propertyValueId": 0,
+            "url": "https://china-product.poizon.com/FpTF2ziST1si7fPDSzeYj8rhawzJnew.png"
+          },
+          {
+            "propertyValueId": 0,
+            "url": "https://china-product.poizon.com/FlsXF90FJY9t2nr_ITCklk0bnsthnew.png"
+          }
+        ]
+      },
+      "imageLayoutType": 0
+    },
+    "baseProperties": {
+      "brandList": [
+        {
+          "brandId": 13,
+          "brandName": "Jordan"
+        }
+      ],
+      "list": [
+        {
+          "key": "货号",
+          "value": "553558-116"
+        },
+        {
+          "key": "发售价格",
+          "value": "¥799(仅供参考)"
+        },
+        {
+          "key": "发售日期",
+          "value": "2019.04.01"
+        },
+        {
+          "key": "配色",
+          "value": "黑/白/红"
+        }
+      ]
+    },
+    "saleProperties": {
+      "list": [
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "39",
+          "propertyValueId": 251827,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 1,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "40",
+          "propertyValueId": 251828,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 2,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "40.5",
+          "propertyValueId": 251829,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 3,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "41",
+          "propertyValueId": 251830,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 4,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "42",
+          "propertyValueId": 251831,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 5,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "42.5",
+          "propertyValueId": 251832,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 6,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "43",
+          "propertyValueId": 251833,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 7,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "44",
+          "propertyValueId": 251834,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 8,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "44.5",
+          "propertyValueId": 251826,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 9,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "45",
+          "propertyValueId": 251835,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 10,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "45.5",
+          "propertyValueId": 251836,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 11,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "46",
+          "propertyValueId": 251837,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 12,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "46.5",
+          "propertyValueId": 251838,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 13,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "47",
+          "propertyValueId": 251839,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 14,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "47.5",
+          "propertyValueId": 251840,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 15,
+          "definitionId": 6
+        },
+        {
+          "propertyId": 4663,
+          "name": "尺码",
+          "value": "48.5",
+          "propertyValueId": 251841,
+          "level": 1,
+          "customValue": "",
+          "showValue": 1,
+          "sort": 16,
+          "definitionId": 6
+        }
+      ]
+    },
+    "item": {
+      "saleInventoryNo": "SN102392747",
+      "price": 84900
+    },
+    "skus": [
+      {
+        "skuId": 161094565,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251827
+          }
+        ]
+      },
+      {
+        "skuId": 161094589,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251828
+          }
+        ]
+      },
+      {
+        "skuId": 161094592,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251829
+          }
+        ]
+      },
+      {
+        "skuId": 161094607,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251830
+          }
+        ]
+      },
+      {
+        "skuId": 161094612,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251831
+          }
+        ]
+      },
+      {
+        "skuId": 161094613,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251832
+          }
+        ]
+      },
+      {
+        "skuId": 161094618,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251833
+          }
+        ]
+      },
+      {
+        "skuId": 161094626,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251834
+          }
+        ]
+      },
+      {
+        "skuId": 161094627,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251826
+          }
+        ]
+      },
+      {
+        "skuId": 161094631,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251835
+          }
+        ]
+      },
+      {
+        "skuId": 161094633,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251836
+          }
+        ]
+      },
+      {
+        "skuId": 161094641,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251837
+          }
+        ]
+      },
+      {
+        "skuId": 161094642,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251838
+          }
+        ]
+      },
+      {
+        "skuId": 161094644,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251839
+          }
+        ]
+      },
+      {
+        "skuId": 161094645,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251840
+          }
+        ]
+      },
+      {
+        "skuId": 161094649,
+        "spuId": 26850,
+        "authPrice": 79900,
+        "status": 1,
+        "properties": [
+          {
+            "level": 1,
+            "propertyValueId": 251841
+          }
+        ]
+      }
+    ],
+    "relationList": [
+      {
+        "spuId": 9428,
+        "logoUrl": "https://china-product.poizon.com/4bb43a2f6599b1ad8d8e48a604457af2new.png",
+        "title": "Air Jordan 1 Low 低帮 伯爵 黑灰",
+        "price": 139900,
+        "soldNum": 1716,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 29828,
+        "logoUrl": "https://china-product.poizon.com/FmmbXJm9ecW72w9zuAXh7_U7U6afnew.png",
+        "title": "Air Jordan 1 Low 黑绿脚趾",
+        "price": 91900,
+        "soldNum": 28370,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 68584,
+        "logoUrl": "https://du.hupucdn.com/FtUd-lXZtUzutNon7Gp24ikJokt0",
+        "title": "Air Jordan 1 Low \"Noble Red\" 酒红",
+        "price": 59900,
+        "soldNum": 2634,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 22134,
+        "logoUrl": "https://china-product.poizon.com/354dc48a90e62340022267d488ba5afanew.png",
+        "title": "Air Jordan 1 Low Retro Ember Glow 午夜蓝",
+        "price": 179900,
+        "soldNum": 5343,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 27266,
+        "logoUrl": "https://du.hupucdn.com/FqCQQTprZN954QJ4kPM4VP1J9dOD",
+        "title": "Air Jordan 1 “University Gold”  Low 黑黄脚趾",
+        "price": 74900,
+        "soldNum": 22949,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 70209,
+        "logoUrl": "https://du.hupucdn.com/Fq-UcrdIP8JzIdFmSZOSQBkuWyqI",
+        "title": "Air Jordan 1 Low \"Noble Red\" (GS) 酒红",
+        "price": 58900,
+        "soldNum": 5546,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 32590,
+        "logoUrl": "https://china-product.poizon.com/Fv38tW34QEX5VD6nSddQZjlqEhC8new.png",
+        "title": "【吴亦凡同款】Air Jordan 1 Low Court Purple 黑紫脚趾",
+        "price": 75900,
+        "soldNum": 24778,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 36634,
+        "logoUrl": "https://china-product.poizon.com/FgUoQojBBLfTIHbyYCPMwKPhcuwqnew.png",
+        "title": "【BP幼童】Air Jordan 1 Low ALT 低帮 黑脚趾",
+        "price": 47900,
+        "soldNum": 3741,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 9429,
+        "logoUrl": "https://china-product.poizon.com/b6ba67f4262989f753f90fcb70038823new.png",
+        "title": "Air Jordan 1 Low 低帮 黑脚趾 薄荷绿 蒂夫尼",
+        "price": 160900,
+        "soldNum": 2923,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 36440,
+        "logoUrl": "https://china-product.poizon.com/FrOkIniUW-ocz7juy41k260PTor0new.png",
+        "title": "Air Jordan 1 Low Gold Toe 黑金脚趾 低帮",
+        "price": 78900,
+        "soldNum": 21869,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 3482,
+        "logoUrl": "https://china-product.poizon.com/d8321279be836840b6e37026780e86danew.png",
+        "title": "Air Jordan 1 Retro Low Chicago (2016)",
+        "price": 489900,
+        "soldNum": 174,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 657,
+        "logoUrl": "https://china-product.poizon.com/7f70e2d73a72148d7953552cf725c31cnew.png",
+        "title": "Air Jordan 1 Retro Black Toe (2013)",
+        "price": 333900,
+        "soldNum": 536,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 15109,
+        "logoUrl": "https://china-product.poizon.com/7f837f80052f3b706136afe7f62c2b55new.png",
+        "title": "Air Jordan 1 Low 低帮 大灌篮",
+        "price": 104900,
+        "soldNum": 4874,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 23024,
+        "logoUrl": "https://china-product.poizon.com/aa56b196a394234ffeb77ec4610f444bnew.png",
+        "title": "SoleFly x Air Jordan 1 Retro High OG 扣碎 橙",
+        "price": 899900,
+        "soldNum": 759,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      },
+      {
+        "spuId": 276,
+        "logoUrl": "https://china-product.poizon.com/Fkih5rMIb78lM7A00o-zU7tVV_3knew.png",
+        "title": "Air Jordan 1 黑脚趾 (GS)",
+        "price": 326900,
+        "soldNum": 1074,
+        "propertyValueId": 0,
+        "requestId": "1521366018286999"
+      }
+    ],
+    "lastSoldList": {
+      "count": 136494,
+      "list": [
+        {
+          "avatar": "https://du.hupucdn.com/FopKJAJnH2BCZ5M2MId0OmBVkvdp?imageView2/2/w/50/h/50",
+          "userName": "自*O",
+          "formatTime": "29分钟前",
+          "orderSubTypeName": "",
+          "price": 91900,
+          "propertiesValues": "44"
+        },
+        {
+          "avatar": "https://du.hupucdn.com/byte73103byte_BEC58F2D1C2489ED04EA4B896C359382_iOS_w828h828.png?imageView2/2/w/50/h/50",
+          "userName": "G*2",
+          "formatTime": "30分钟前",
+          "orderSubTypeName": "",
+          "price": 89900,
+          "propertiesValues": "44.5"
+        },
+        {
+          "avatar": "https://cdn.poizon.com/node-common/TGFyazIwMjAwMzIwLTE4MzQ0OA==.png?imageView2/2/w/50/h/50",
+          "userName": "酷*p",
+          "formatTime": "32分钟前",
+          "orderSubTypeName": "",
+          "price": 89900,
+          "propertiesValues": "44.5"
+        },
+        {
+          "avatar": "https://du.hupucdn.com/FshWfBCVKCxQo8wKvgYQByUjpNmU?imageView2/2/w/50/h/50",
+          "userName": "讲*I",
+          "formatTime": "40分钟前",
+          "orderSubTypeName": "",
+          "price": 108900,
+          "propertiesValues": "40.5"
+        },
+        {
+          "avatar": "https://du.hupucdn.com/Fn_85xLxCs9jkXeROKkDCCBD7paZ?imageView2/2/w/50/h/50",
+          "userName": "高*6",
+          "formatTime": "1小时前",
+          "orderSubTypeName": "",
+          "price": 109900,
+          "propertiesValues": "40.5"
+        }
+      ]
+    },
+    "favoriteList": [
+      {
+        "skuId": 161094565,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094589,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094592,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094607,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094612,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094613,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094618,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094626,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094627,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094631,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094633,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094641,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094642,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094644,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094645,
+        "isAdded": 0
+      },
+      {
+        "skuId": 161094649,
+        "isAdded": 0
+      }
+    ],
+    "couponList": [],
+    "imageAndText": [
+      {
+        "images": [
+          {
+            "url": "https://cdn.poizon.com/node-common/JUU5JTg5JUI0JUU1JTg4JUFCJUU1JTkzJTgxJUU1JUFFJUEzQDN4.png?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 1125,
+            "height": 243
+          }
+        ],
+        "imageGap": true
+      },
+      {
+        "type": "text",
+        "contentType": "HISTORY",
+        "contentName": "",
+        "images": [
+          {
+            "url": "https://china-product.poizon.com/eae786e830f5fcf7124d291b2e6ffa6bnew.png?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 77
+          },
+          {
+            "url": "https://china-product.poizon.com/e8133967c554bc9fbb30f066ee531c81new.jpg?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 377
+          },
+          {
+            "url": "https://china-product.poizon.com/spu-26850-history-7-814658new.png?x-oss-process=image/resize,w_1080",
+            "width": 1600,
+            "height": 742
+          },
+          {
+            "url": "https://china-product.poizon.com/7147ef0a29124f53f9cc223cd8115a7dnew.jpg?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 377
+          },
+          {
+            "url": "https://china-product.poizon.com/48b6ea5141ad3c43754e53ea0bca1587new.jpg?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 377
+          },
+          {
+            "url": "https://china-product.poizon.com/d34fd477c95318849995bc6f41d49e71new.jpg?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 377
+          },
+          {
+            "url": "https://china-product.poizon.com/0f1a9886be905ef757a8e91d9c8e5d36new.jpg?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 377
+          },
+          {
+            "url": "https://china-product.poizon.com/b2a692b615c1698827001370e6a3d830new.jpg?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 377
+          },
+          {
+            "url": "https://china-product.poizon.com/8f6bcf6df2ed3ac70ff77d81a4dec23anew.png?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 77
+          },
+          {
+            "url": "https://china-product.poizon.com/7a5cfd1e3be9dbff8a856ed8cf42362cnew.jpg?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 790
+          }
+        ],
+        "imageGap": true
+      },
+      {
+        "type": "image",
+        "contentType": "SIZETEMPLATE",
+        "contentName": "",
+        "images": [
+          {
+            "url": "http://luna-public.poizon.com/du_sizechart/Sizechart/46082a06c22889b8.jpg?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 1440,
+            "height": 2937
+          }
+        ],
+        "imageGap": true
+      },
+      {
+        "type": "text",
+        "contentType": "ATTENTION",
+        "contentName": "",
+        "images": [
+          {
+            "url": "https://cdn.poizon.com/node-common/JUU4JUI0JUFEJUU3JTg5JUE5JUU5JUExJUJCJUU3JTlGJUE1LSVFNiU5NiVCMEAyeA==.png?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 750,
+            "height": 34
+          },
+          {
+            "url": "https://china-product.poizon.com/category-29-attention-232751.png?x-oss-process=image/resize,w_1080",
+            "width": 1600,
+            "height": 2651
+          }
+        ],
+        "imageGap": true
+      },
+      {
+        "images": [
+          {
+            "url": "https://cdn.poizon.com/node-common/JUU1JTkzJTgxJUU1JUFFJUEzQDN4.png?x-oss-process=image/resize,w_1080",
+            "coverUrl": "",
+            "width": 1125,
+            "height": 1947
+          }
+        ],
+        "imageGap": true
+      }
+    ],
+    "evaluate": {
+      "count": 17573,
+      "type": 1,
+      "rateMsg": "88.6%的人觉得超赞",
+      "sizeMsg": "83.5%的人觉得尺码合适",
+      "commonSize": "0",
+      "sizes": [
+        {
+          "key": "little",
+          "name": "偏小",
+          "value": 1492
+        },
+        {
+          "key": "normal",
+          "name": "合适",
+          "value": 14676
+        },
+        {
+          "key": "large",
+          "name": "偏大",
+          "value": 1405
+        }
+      ]
+    },
+    "kfInfo": {
+      "isShowKf": 1,
+      "kfRobotId": 163756,
+      "kfRobotoId": 163756,
+      "kfGroupId": 264227373,
+      "sourceName": "related"
+    },
+    "advMidPriorityModel": {},
+    "branding": {
+      "newUser": false,
+      "image": "https://du.hupucdn.com/FplHm_5EOyNBruQBm7huSVR8ih_m",
+      "redirect": "https://m.poizon.com/nvwa/#/detail/5e68b4f56bf60823cbd92eea"
+    },
+    "threeDLinkUrl": "http://m.poizon.com/router/product/ProductDetail?spuId=26850&sourceName=shareDetail&shareSource=productDetail",
+    "shareLinkUrl": "http://m.poizon.com/router/product/ProductDetail?spuId=26850&sourceName=shareDetail",
+    "miniShareLinkUrl": "/product/ProductDetail?spuId=26850&sourceName=shareDetail",
+    "hasSizeTable": false
+  },
+  "code": 200,
+  "status": 200,
+  "msg": "ok",
+  "error": false
+}

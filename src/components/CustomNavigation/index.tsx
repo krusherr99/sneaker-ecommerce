@@ -11,14 +11,16 @@ export default class CustomNavigation extends Component {
 
   handleNavigateBack = () => {
     console.log("left点击了");
+    Taro.navigateBack();
   }
 
   handleNavigateHome = () => {
     console.log('back icon点击了');
+    Taro.navigateBack();
   }
 
   handleClick = () => {
-    console.log('点击了整个按钮');
+    Taro.navigateBack();
   }
 
   render() {

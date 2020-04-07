@@ -12,18 +12,43 @@ import './product.less'
 import Service from './components/Service'
 import ProductDetail from './components/ProductDetail'
 import { ITouchEvent } from '@tarojs/components/types/common'
+import axios from 'taro-axios'
+import { getProductById } from '../pages/index/api/index'
+
+export interface ProductImage {
+  url: string,
+  sort: number
+}
+
+export interface Detail {
+  id: number;
+  price: number;
+  soldNum: number;
+  title: string;
+  productNumber: string;
+  authPrice: number,
+  sellDate: number,
+  color: string,
+}
+
+interface sizeItem {
+  skuId: number,
+  spuId: number,
+  value: number,
+  price: number,
+  isSelect: boolean
+}
+
 
 interface ProductProps { }
 interface ProductState {
   showPopup: boolean;
-  selectItem: Item
+  selectItem: sizeItem;
+  sizeList: Array<any>;
+  detail: Detail,
+  imageList: Array<ProductImage>
 }
 
-interface Item {
-  size: number,
-  price: number,
-  isSelect: boolean
-}
 
 export default class Product extends Component<ProductProps, ProductState> {
   config: Config = {
@@ -33,14 +58,28 @@ export default class Product extends Component<ProductProps, ProductState> {
 
   state: ProductState = {
     showPopup: false,
+    sizeList: [],
     selectItem: {
-      size: 0,
+      spuId: 0,
+      skuId: 0,
+      value: 0,
       price: 0,
       isSelect: false
-    }
+    },
+    detail: {
+      id: 0,
+      price: 0,
+      soldNum: 0,
+      title: '',
+      productNumber: '',
+      authPrice: 0,
+      sellDate: 0,
+      color: 'string',
+    },
+    imageList: []
   }
 
-  handleClickBuy = (e: ITouchEvent) => {
+  handleShowPopup = (e: ITouchEvent) => {
     this.setState({ showPopup: true })
   }
 
@@ -48,78 +87,99 @@ export default class Product extends Component<ProductProps, ProductState> {
     this.setState({ showPopup: false })
   }
 
-  handleSelect = (item: Item) => {
+  handleSelect = (item: sizeItem) => {
+    console.log(item)
     item.isSelect = true
-    this.setState({ selectItem: item }, () => { console.log(this.state.selectItem); })
+    this.setState({ selectItem: item })
+  }
+
+  handleBuy = () => {
+    const { skuId } = this.state.selectItem
+    const isLogin = Taro.getStorageSync('isLogin')
+    isLogin
+      ?
+      Taro.navigateTo({
+        url: `/order/OrderConfirmPage/index?skuId=${skuId}`
+      })
+      :
+      Taro.showToast({
+        title: '请先登录',
+        duration: 1500,
+        icon: 'none'
+      }).then(resp => {
+        setTimeout(() => {
+          Taro.navigateTo({
+            url: '/pages/login/index'
+          })
+        }, 1500)
+      })
+  }
+
+  componentDidMount() {
+    axios.get(`http://localhost:8080/product/${this.$router.params.id}`)
+      .then(resp => {
+        const { sizeList, imageList, ...detail } = resp.data.data
+        sizeList.forEach(item => {
+          item['isSelect'] = false;
+        })
+        console.log(sizeList);
+        this.setState({ sizeList, detail, imageList })
+      })
+      .catch(err => { console.log(err); })
   }
 
   render() {
-    let { showPopup, selectItem } = this.state
-    let sizeList = [
-      {
-        size: 35.5,
-        price: 1179,
-        isSelect: false
-      },
-      {
-        size: 36,
-        price: 1039,
-        isSelect: false
-      },
-      {
-        size: 36.5,
-        price: 1009,
-        isSelect: false
-      },
-      {
-        size: 37.5,
-        price: 1029,
-        isSelect: false
-      }
-    ]
-
+    let { showPopup, selectItem, sizeList, detail, imageList } = this.state
     return (
       <View id='product'>
         <CustomNavigation />
         <View className='container'>
           <View className='product-header'>
+
             <Swiper
               className='product-swipper'
               indicatorDots={true}
             >
-              <SwiperItem className='swiperItem-container'>
-                <Image className='min-header-image' src="https://du.hupucdn.com/FlCpOh0H4ssWxdwLz1aUztdRV2vg"></Image>
-              </SwiperItem>
-              <SwiperItem className='swiperItem-container'>
-                <Image className='min-header-image' src="https://du.hupucdn.com/Fs14PhHt0m0MkvKgXaCLegMuF5N9"></Image>
-              </SwiperItem>
-              <SwiperItem className='swiperItem-container'>
-                <Image className='min-header-image' src="https://du.hupucdn.com/Ft9PRazzVOka2oURkIgAFjQQHh6I"></Image>
-              </SwiperItem>
+              {
+                imageList.map(item => {
+                  return (
+                    <SwiperItem key={item.url} className='swiperItem-container'>
+                      <Image className='min-header-image' src={item.url}></Image>
+                    </SwiperItem>
+                  )
+                })
+              }
             </Swiper>
+
             <View className='product-title'>
-              <Text>Air Jordan 1 Low Black Toe (GS) 黑脚趾</Text>
+              <Text>{detail.title}</Text>
             </View>
             <View className='product-price'>
               <View className='price-info'>
                 <Text className='price-unit'>￥</Text>
-                <Text className='price'>1029</Text>
+                <Text className='price'>{selectItem.price || detail.price}</Text>
               </View>
             </View>
           </View>
           <View className='product-coupon'>
             <View className='coupon-title'>选择尺码</View>
-            <View className='coupon-list' onClick={this.handleClickBuy}>
+            <View className='coupon-list' onClick={this.handleShowPopup}>
               <View className='select-name'>
-                <Text>请选择尺码</Text>
+                <Text>
+                  {selectItem.isSelect ? `已选 ${selectItem.value}` : `共有${sizeList.length}个尺码可选`}
+                </Text>
               </View>
               <Image className='arrow-right' src={right}></Image>
             </View>
           </View>
+
           <Service />
-          <ProductDetail />
+
+          <ProductDetail detail={detail} imageList={imageList} />
+
+          <View style={{ marginBottom: '136rpx' }}></View>
           <View className='buy-button-view'>
-            <View className='buy' onClick={this.handleClickBuy}>立即购买</View>
+            <View className='buy' onClick={this.handleShowPopup}>立即购买</View>
           </View>
 
           <View className={classNames('select-mask', { 'show': showPopup })}>
@@ -131,12 +191,12 @@ export default class Product extends Component<ProductProps, ProductState> {
                 <View className='header-info'>
                   <View className='price'>
                     <Text className='unit'>￥</Text>
-                    {selectItem.size ? selectItem.price : '--'}
+                    {selectItem.value ? selectItem.price : '--'}
                   </View>
                   <View className='header-desc'>
                     <Image src={small_icon}></Image>
                     <View className='cover-desc'>
-                      {selectItem.size ? `已选 ${selectItem.size}` : '请选择商品'}
+                      {selectItem.value ? `已选 ${selectItem.value}` : '请选择商品'}
                     </View>
                   </View>
                 </View>
@@ -145,7 +205,7 @@ export default class Product extends Component<ProductProps, ProductState> {
                 <Image className='close' src={close}></Image>
                 <View className='get-seller-flow'>
                   <Text className='iconfont icon-question'></Text>
-                  闪电直发 
+                  闪电直发
                 </View>
               </View>
             </View>
@@ -156,10 +216,11 @@ export default class Product extends Component<ProductProps, ProductState> {
                   sizeList.map((item) => {
                     return (
                       <View
-                        className={classNames('select-size-info', { 'isSelect': item.size === selectItem.size })}
+                        key={item.skuId}
+                        className={classNames('select-size-info', { 'isSelect': item.value === selectItem.value })}
                         onClick={this.handleSelect.bind(this, item)}
                       >
-                        <View className='size'>{item.size}</View>
+                        <View className='size'>{item.value}</View>
                         <View className='size-price'>￥{item.price}</View>
                       </View>
                     )
@@ -168,15 +229,15 @@ export default class Product extends Component<ProductProps, ProductState> {
               </View>
             </View>
             {
-              selectItem.size &&
+              selectItem.value &&
               <View className='buy-button'>
-                <View className='button-view left'>
+                <View className='button-view left' onClick={this.handleBuy}>
                   <View className='button-left'>
                     <View className='price'>￥{selectItem.price}</View>
                   </View>
                   <View className='button-right'>立即购买</View>
                 </View>
-                <View className='button-view right'>
+                <View className='button-view right' onClick={this.handleBuy}>
                   <View className='button-left'>
                     <View className='price'>￥{selectItem.price + 20}</View>
                   </View>

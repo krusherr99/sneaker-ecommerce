@@ -33,6 +33,8 @@ class App extends Component {
       // 'pages/test/index',
       'pages/index/index',
       'pages/tabmine/index',
+      'pages/register/index',
+      'pages/login/index'
     ],
     "subPackages": [
       {

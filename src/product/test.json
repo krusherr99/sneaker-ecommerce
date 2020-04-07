@@ -1,0 +1,42 @@
+{
+  "code": 200,
+  "msg": "查询商品成功",
+  "success": true,
+  "data": {
+      "id": 1,
+      "price": 809,
+      "soldNum": 1695,
+      "title": "Air Jordan 1 Mid Shattered Backboard 扣碎篮板",
+      "indexImage": "https://du.hupucdn.com/Fn20HZPjmCnQk_VCNJ9C2HRg0xP5",
+      "sizelist": [
+        {
+          "unit": "尺码",
+          "spuId": 8,
+          "value": "36",
+          "price": 1599,
+          "amount": 85
+        },
+        {
+          "unit": "尺码",
+          "spuId": 8,
+          "value": "36.5",
+          "price": 1599,
+          "amount": 156
+        },
+        {
+          "unit": "尺码",
+          "spuId": 8,
+          "value": "37.5",
+          "price": 2599,
+          "amount": 210
+        },
+        {
+          "unit": "尺码",
+          "spuId": 8,
+          "value": "38",
+          "price": 1599,
+          "amount": 18
+        }
+      ]
+  }
+}

@@ -14,6 +14,8 @@ import { add, minus, asyncAdd } from '../../actions/counter'
 import './index.less'
 import HotList from './components/HotList'
 import LoadMore from '../../components/LoadMore'
+import axios from 'taro-axios'
+import { initAddress } from '../../actions/address'
 
 
 
@@ -30,13 +32,15 @@ import LoadMore from '../../components/LoadMore'
 type PageStateProps = {
   counter: {
     num: number
+  },
+  address: {
+    addressId: number,
+    addressList: Array<any>
   }
 }
 
 type PageDispatchProps = {
-  add: () => void
-  dec: () => void
-  asyncAdd: () => any
+  initAddress: () => any;
 }
 
 type PageOwnProps = {}
@@ -50,95 +54,26 @@ interface Index {
 }
 
 type Product = {
+  id: number;
   title: string;
   price: number;
-  soldNumber: number
+  soldNum: number;
+  indexImage: string;
 }
 
 interface IndexProps { }
 export interface IndexState {
+  page: number;
   loading: boolean;
   hasMore: boolean;
   list: Product[]
 }
 
-const testList: Product[] = [
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-]
-const testListAdd: Product[] = [
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-  {
-    title: 'Air Jordan 11 康扣',
-    price: 2279,
-    soldNumber: 5957
-  },
-]
-
-
-@connect(({ counter }) => ({
-  counter
+@connect(({ address }) => ({
+  address
 }), (dispatch) => ({
-  add() {
-    dispatch(add())
-  },
-  dec() {
-    dispatch(minus())
-  },
-  asyncAdd() {
-    dispatch(asyncAdd())
+  initAddress: () => {
+    dispatch(initAddress())
   }
 }))
 class Index extends Component<IndexProps, IndexState> {
@@ -155,29 +90,63 @@ class Index extends Component<IndexProps, IndexState> {
   }
 
   state: IndexState = {
+    page: 1,
     loading: false,
     hasMore: true,
     list: []
   }
 
-  loadMore = () => {
-    let { list } = this.state
-    this.setState({ loading: true })
-    setTimeout(() => {
-      this.setState({ list: list.concat(testListAdd) })
-      this.setState({ loading: false })
-    }, 1500)
-  }
-
   componentWillMount() {
-
-    Taro.redirectTo({ url: '/product/ProductSearchResult/index' })
+    // 重定向
+    // Taro.redirectTo({ url: '/product/ProductSearchResult/index' })
+    // Taro.redirectTo({ url: '/product/product' })
+    // Taro.redirectTo({ url: '/account/ShippingAddressPage/index' })
+    // Taro.redirectTo({ url: '/pages/register/index' })
+    // Taro.redirectTo({ url: '/pages/login/index' })
+    // Taro.redirectTo({ url: '/order/OrderConfirmPage/index' })
   }
 
   componentDidMount() {
-    const list = testList
-    this.setState({ list })
+    axios.get(`http://localhost:8080/product?page=${this.state.page}`)
+      .then(resp => {
+        const { list, nextPage, hasNextPage } = resp.data.data
+        // setTimeout(() => {
+          this.setState({
+            list: list,
+            page: nextPage,
+            hasMore: hasNextPage,
+            // loading: false
+          })
+        // }, 1000)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    this.props.initAddress()
   }
+
+  loadMore = () => {
+    let { list: preList, hasMore } = this.state
+    if(!hasMore) { 
+      return
+    }
+    this.setState({ loading: true })
+    axios.get(`http://localhost:8080/product?page=${this.state.page}`)
+      .then(resp => {
+        const { list, nextPage, hasNextPage } = resp.data.data
+        setTimeout(() => { this.setState({ 
+          list: preList.concat(list), 
+          page: nextPage,
+          hasMore: hasNextPage,
+          loading: false 
+        }) }, 1000)
+      })
+      .catch(err => {
+        console.log(err);
+        setTimeout(() => { this.setState({ loading: false }) }, 1000)
+      })
+  }
+
 
   render() {
     const { loading, hasMore, list } = this.state

@@ -4,7 +4,7 @@ import { View, Text } from '@tarojs/components'
 import SearchBox from './components/SearchBox'
 import SearchFilters from './components/SearchFilters'
 import SearchList from './components/SearchList'
-// import HotList from '../../home/components/HotList/index';
+import HotList from '../../pages/index/components/HotList'
 import SearchWrap from './components/SearchWarp'
 
 import './index.less'
@@ -30,13 +30,22 @@ type SearchWord = {
   highlight: string;
 }
 
+export type ResultItem = {
+  id: number;
+  price: number;
+  soldNum: number;
+  title: string;
+  indexImage: string;
+}
+
 interface ProductSearchResultProps { }
 export interface ProductSearchResultState {
   sortType: SortType;
   selectSize: boolean;
   selectSizeString: string;
   filterPriceUp: FilterPriceUp;
-  searchWordList: SearchWord[]
+  searchWordList: SearchWord[];
+  resultList: ResultItem[];
 }
 
 export default class ProductSearchResult extends Component<ProductSearchResultProps, ProductSearchResultState> {
@@ -46,7 +55,8 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     selectSize: false,
     selectSizeString: '全部',
     filterPriceUp: -1,
-    searchWordList: []
+    searchWordList: [],
+    resultList: []
   }
 
   searchFilterTap = (sortType: SortType) => {
@@ -69,20 +79,27 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     this.setState({ selectSizeString, selectSize })
   }
 
+  updateResultList = (list) => {
+    this.setState({
+      resultList: list
+    })
+  }
+
+
   render() {
-    // const { selectSizeString, selectSize } = this.state
+    const { selectSizeString, selectSize } = this.state
     // const { searchWordList } = this.state
 
     const { list: searchWordList } = data
     // console.log(searchWordList);
     return (
       <View className='max-height'>
-        <SearchBox />
+        <SearchBox updateResultList={this.updateResultList} />
         {/* <SearchWrap /> */}
 
-        {
+        {/*
           searchWordList.map(item => {
-            console.log('执行到这儿了')
+            // console.log('')
             return (
               <View className="search-list" >
                 <View className="list-cell">{item.word}</View>
@@ -90,9 +107,9 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
               </View>
             )
           })
-        }
+        */}
 
-        {/* <SearchFilters
+         <SearchFilters
           searchFilterTap={this.searchFilterTap}
           selectSize={this.state.selectSize}
           selectSizeString={selectSizeString}
@@ -121,9 +138,9 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
             </View>
           </View>
         }
-        <View style={{ marginTop: '-8px' }}>
-        </View>
-        <SearchList /> */}
+        <View style={{ marginTop: '-8px' }}></View>
+        <HotList />
+        {/* <SearchList />  */}
       </View>
     )
   }
