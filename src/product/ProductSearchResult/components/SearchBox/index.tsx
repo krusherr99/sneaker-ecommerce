@@ -4,11 +4,11 @@ import axios from 'taro-axios'
 
 
 import './index.less'
-import { BaseEventOrig } from '@tarojs/components/types/common'
+import { BaseEventOrig, BaseEventOrigFunction } from '@tarojs/components/types/common'
 import { InputProps } from '@tarojs/components/types/Input'
 
 interface SearchBoxProps {
-  updateResultList: (list) => void
+  updateResultList: (word) => void
 }
 
 export default class SearchBox extends Component<SearchBoxProps> {
@@ -28,20 +28,10 @@ export default class SearchBox extends Component<SearchBoxProps> {
     //   .catch(err => { console.log(err); })
   }
 
-  onConfirm = () => {
-    const { updateResultList } = this.props
-    axios.get(`http://localhost:8080/product/test`)
-      .then(resp => {
-        console.log(resp.data.data);
-        updateResultList(resp.data.data.list)
-      })
-      .catch(err => {
-        console.log(err);
-      })
+  onConfirm: BaseEventOrigFunction<InputProps.inputValueEventDetail> = (event) => {
+
+    this.props.updateResultList(event.detail.value)
   }
-
-
-
 
   render() {
     return (

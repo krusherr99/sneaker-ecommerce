@@ -15,6 +15,10 @@ interface ProductDetailProps {
 
 export default class ProductDetail extends Component<ProductDetailProps> {
 
+  // TODO: 设置defaultProps
+  // defaultProps: {
+  // }
+
   render() {
     const { detail, imageList } = this.props
     const formatDate = moment(detail.sellDate * 1000).format('YYYY.MM.DD');

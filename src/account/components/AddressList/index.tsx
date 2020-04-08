@@ -1,37 +1,20 @@
 import Taro, { Component, Config, ComponentClass } from '@tarojs/taro'
 import { View, Icon } from '@tarojs/components'
 import classNames from 'classnames';
-import { changeAddress } from '../../../actions/address'
+import { changeAddress, updateAddress, initAddress } from '../../../actions/address';
 import './index.less'
 import { Address } from 'src/account/ShippingAddressPage';
 import { connect } from '@tarojs/redux';
+import axios from 'taro-axios';
 
-// const addressList = [
-//   {
-//     name: '起名字好难啊',
-//     phone: '182****7296',
-//     province: '江苏省',
-//     city: '南通市',
-//     district: '通州区',
-//     address: '润园花苑',
-//     default: 1
-//   },
-//   {
-//     name: '起名字好难啊',
-//     phone: '182****7296',
-//     province: '江苏省',
-//     city: '南通市',
-//     district: '通州区',
-//     address: '润园花苑',
-//     default: 0
-//   }
-// ]
 interface AddressListOwnProps  {
   addressList: Array<Address>;
 }
 
 interface AddressListDispatchProps {
-  changeAddress: (addressId: number) => void
+  changeAddress: (addressId: number) => void,
+  updateAddress: (addressId: number, address: Address) => void,
+  initAddress: () => void
 }
 
 type AddressListStateProps = { }
@@ -47,6 +30,12 @@ interface AddressList {
 @connect(() => ({}), (dispatch) => ({
   changeAddress: (addressId) => {
     dispatch(changeAddress(addressId))
+  },
+  updateAddress: (addressId, address) => {
+    dispatch(updateAddress(addressId, address))
+  },
+  initAddress: () => {
+    dispatch(initAddress())
   }
 }))
 class AddressList extends Component<AddressListProps> {
@@ -65,20 +54,36 @@ class AddressList extends Component<AddressListProps> {
     const { addressList } = this.props
     addressList.map((item, index) => {
       if(item.default === true) {
+        // 将原来的默认移除
         item.default = false
-        // 修改地址接口
-        
+        // redux向后端请求更新
+        this.props.updateAddress(item.id, item)
       }
       if(selectIndex === index) {
         item.default = true
-        // 修改地址接口
+        // redux向后端请求更新
+        this.props.updateAddress(item.id, item)
+        // 返回上一页
+        Taro.navigateBack()
       }
     })
-    
-    
-    // init修改后的store
+  }
 
-    // navigateBack
+  editAddress = (id) => {
+    Taro.navigateTo({
+      url: `/account/AddressEditPage/index?id=${id}`
+    })
+  }
+
+  deleteAddress = (id) => {
+    axios.delete(`http://localhost:8080/address/${id}`)
+      .then(resp => {
+        console.log(resp.data.data);
+        this.props.initAddress()
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
@@ -88,7 +93,7 @@ class AddressList extends Component<AddressListProps> {
         {
           addressList.map((item, index) => {
             return (
-              <View className="addressContainer ">
+              <View key={item.district} className="addressContainer ">
 
                 <View onClick={this.selectAddress.bind(this, item.id)}>
                   <View className="addressContent ">
@@ -111,8 +116,8 @@ class AddressList extends Component<AddressListProps> {
                     <View className="selectTitle ">默认地址</View>
                   </View>
                   <View className="operate ">
-                    <View className="edit " >编辑</View>
-                    <View className="delete " data-index="{{index}}">删除</View>
+                    <View className="edit " onClick={this.editAddress.bind(this, item.id)} >编辑</View>
+                    <View className="delete " onClick={this.deleteAddress.bind(this, item.id)}>删除</View>
                   </View>
                 </View>
               </View>

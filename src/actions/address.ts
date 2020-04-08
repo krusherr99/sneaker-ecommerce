@@ -21,11 +21,24 @@ export const changeAddress = (addressId) => {
   }
 }
 
-// export const updateAddress = () => {
-//   return (dispatch) => {
-//     axios.post(``)
-//   }
-// }
+export const updateAddress = (addressId, address) => {
+  return (dispatch) => {
+    axios.put(
+      `http://localhost:8080/address/${addressId}`,
+      {
+        ...address
+      }
+    )
+      .then(resp => {
+        console.log(resp.data.data);
+        // 更新store
+        dispatch(initAddress())
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+}
 
 export const initAddress = () => {
   return (dispatch) => {
@@ -33,10 +46,10 @@ export const initAddress = () => {
       .then(resp => {
         let addressId
         (resp.data.data as Array<any>).forEach((item) => {
-          if(item.default === true) {
+          if (item.default === true) {
             addressId = item.id
           }
-        }) 
+        })
         dispatch(init({ addressId, addressList: resp.data.data }))
       })
       .catch(err => {

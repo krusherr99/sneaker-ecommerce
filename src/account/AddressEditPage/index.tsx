@@ -15,21 +15,22 @@ interface AddressEditPageState {
   name: string
   phone: string
   detailAddress: string
+  isUpdate: boolean
+  id: number
+  isDefault: boolean
 }
 
 interface AddressEditPageDispatchProps {
   initAddress: () => any
 }
 
-interface  AddressEditPageStateProps {}
+interface AddressEditPageStateProps { }
 
 type IProps = AddressEditPageStateProps & AddressEditPageDispatchProps & AddressEditPageState
 
 interface AddressEditPage {
   props: IProps
 }
-
-
 
 @connect(() => ({}), (dispatch) => ({ initAddress: () => { dispatch(initAddress()) } }))
 class AddressEditPage extends Component<AddressEditPageProps, AddressEditPageState> {
@@ -40,6 +41,9 @@ class AddressEditPage extends Component<AddressEditPageProps, AddressEditPageSta
     name: '',
     phone: '',
     detailAddress: '',
+    isUpdate: false,
+    isDefault: false,
+    id: 0
   }
 
   onRegionChange = (e) => {
@@ -61,39 +65,94 @@ class AddressEditPage extends Component<AddressEditPageProps, AddressEditPageSta
         this.setState({ detailAddress: event.detail.value })
         break;
     }
-
   }
 
-  saveAddressTap = () => {
-    
-    const { userId, name, phone, region, detailAddress } = this.state
-    axios.post(
-      'http://localhost:8080/address',
-      {
-        userId,
-        name,
-        phone,
-        province: region[0],
-        city: region[1],
-        district: region[2],
-        detailAddress: detailAddress,
-        isDefault: false
-      }
-    )
+  componentDidMount() {
+    if (!this.$router.params.id) {
+      return
+    }
+    this.setState({ isUpdate: true })
+    axios.get(`http://localhost:8080/address/${this.$router.params.id}`)
       .then(resp => {
-        Taro.showToast({
-          title: resp.data.message,
-          duration: 1500,
-          icon: 'none',
+        const { id, userId, name, phone, detailAddress, province, city, district, isDefault } = resp.data.data
+        const region = [province, city, district]
+        this.setState({
+          userId,
+          name,
+          phone,
+          detailAddress,
+          region,
+          id,
+          isDefault
         })
-        this.props.initAddress()
-        setTimeout(() => {
-          Taro.navigateBack()
-        }, 1500)
       })
       .catch(err => {
         console.log(err);
       })
+  }
+
+  saveAddressTap = () => {
+
+    const { userId, name, phone, region, detailAddress, isUpdate, id } = this.state
+    isUpdate
+      ?
+      axios.put(
+        `http://localhost:8080/address/${id}`,
+        {
+          id,
+          userId,
+          name,
+          phone,
+          province: region[0],
+          city: region[1],
+          district: region[2],
+          detailAddress: detailAddress,
+          isDefault: false
+        }
+      )
+        .then(resp => {
+          Taro.showToast({
+            title: resp.data.message,
+            duration: 1500,
+            icon: 'none',
+          })
+          this.props.initAddress()
+          setTimeout(() => {
+            Taro.navigateBack()
+          }, 1500)
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
+      :
+      axios.post(
+        'http://localhost:8080/address',
+        {
+          userId,
+          name,
+          phone,
+          province: region[0],
+          city: region[1],
+          district: region[2],
+          detailAddress: detailAddress,
+          isDefault: false
+        }
+      )
+        .then(resp => {
+          Taro.showToast({
+            title: resp.data.message,
+            duration: 1500,
+            icon: 'none',
+          })
+          this.props.initAddress()
+          setTimeout(() => {
+            Taro.navigateBack()
+          }, 1500)
+        })
+        .catch(err => {
+          console.log(err);
+        })
 
 
   }

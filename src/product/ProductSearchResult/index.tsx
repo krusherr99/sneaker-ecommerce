@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, ScrollView } from '@tarojs/components'
 
 import SearchBox from './components/SearchBox'
 import SearchFilters from './components/SearchFilters'
@@ -9,8 +9,9 @@ import SearchWrap from './components/SearchWarp'
 
 import './index.less'
 import classNames from 'classnames';
-
+import axios from 'taro-axios';
 import { data } from './mock/test'
+
 const sizeList = ["35.5", "36", "36.5", "37", "37.5", "38", "38.5", "39", "39.5", "40", "40.5", "41", "41.5", "42", "42.5", "43", "43.5", "44", "44.5", "45", "45.5", "46", "46.5", "47", "47.5", "48", "48.5", "全部"]
 
 const toggleFilterPriceUp = (filterPriceUp: FilterPriceUp): FilterPriceUp => {
@@ -79,18 +80,46 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     this.setState({ selectSizeString, selectSize })
   }
 
-  updateResultList = (list) => {
-    this.setState({
-      resultList: list
-    })
+  updateResultList = (word) => {
+    console.log("word", word);
+    const { sortType, filterPriceUp } = this.state
+    let sort;
+    switch (sortType) {
+      case 1: sort = "soldNum"; break;
+      case 2: sort = "price"; break;
+      case 3: sort = "sellDate"; break;
+      default: break;
+      // 尺码还没搞好
+    }
+    axios.get(
+      'http://localhost:8080/product/search', {
+      params: {
+        // 页数目前写死
+        pageNum: 1,
+        // keyword先写死
+        keyword: 'Jordan',
+        selectSizing: '全部',
+        sortType: sort,
+        isDescending: filterPriceUp === 1 ? true : false
+      }
+    }
+    )
+      .then(resp => {
+        this.setState({ resultList: resp.data.data.list })
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
 
   render() {
-    const { selectSizeString, selectSize } = this.state
+    const { selectSizeString, selectSize, resultList } = this.state
     // const { searchWordList } = this.state
 
-    const { list: searchWordList } = data
+    // 实时显示匹配的搜索关键字
+    // const { list: searchWordList } = data
+
     // console.log(searchWordList);
     return (
       <View className='max-height'>
@@ -109,7 +138,7 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
           })
         */}
 
-         <SearchFilters
+        <SearchFilters
           searchFilterTap={this.searchFilterTap}
           selectSize={this.state.selectSize}
           selectSizeString={selectSizeString}
@@ -138,9 +167,15 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
             </View>
           </View>
         }
-        <View style={{ marginTop: '-8px' }}></View>
-        <HotList />
-        {/* <SearchList />  */}
+        {/* <View style={{ marginTop: '178rpx' }}></View> */}
+        <ScrollView
+          scrollY
+          className='scroll-view'
+        >
+          <HotList list={resultList} />
+          {/* <SearchList />  */}
+        </ScrollView>
+
       </View>
     )
   }
