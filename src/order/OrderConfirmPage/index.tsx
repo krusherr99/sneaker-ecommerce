@@ -51,16 +51,19 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
     address: ''
   }
 
-  componentDidUpdate() {
-    axios.get(`http://localhost:8080/address/${this.props.address.addressId}`)
-      .then(resp => {
-        const { name, phone, detailAddress, province, city, district } = resp.data.data
-        const address = province + city + district + detailAddress;
-        this.setState({ name, phone, address })
-      })
-      .catch(err => {
-        console.log(err);
-      })
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.address.addressId !== this.props.address.addressId) {
+      console.log("props不一样,执行了");
+      axios.get(`http://localhost:8080/address/${this.props.address.addressId}`)
+        .then(resp => {
+          const { name, phone, detailAddress, province, city, district } = resp.data.data
+          const address = province + city + district + detailAddress;
+          this.setState({ name, phone, address })
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
   }
 
   componentWillMount() {

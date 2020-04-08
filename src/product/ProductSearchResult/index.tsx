@@ -112,6 +112,16 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
       })
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (
+      prevState.selectSizeString !== this.state.selectSizeString
+      || prevState.sortType !== this.state.sortType
+      || prevState.filterPriceUp !== this.state.filterPriceUp
+      || prevState.selectSizeString !== this.state.selectSizeString
+    ) {
+      console.log("两次state不一样做些操作");
+    }
+  }
 
   render() {
     const { selectSizeString, selectSize, resultList } = this.state
@@ -153,7 +163,7 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
                 sizeList.map((item: string) => {
                   const isSelect = item === selectSizeString
                   return (
-                    <View className='size-flex-view'>
+                    <View key={item} className='size-flex-view'>
                       <View
                         className={classNames('size-item', { 'size-item-select': isSelect })}
                         onClick={this.selectSizeTap.bind(this, item)}

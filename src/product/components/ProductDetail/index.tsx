@@ -19,9 +19,18 @@ export default class ProductDetail extends Component<ProductDetailProps> {
   // defaultProps: {
   // }
 
+  state = {
+    formatDate: ''
+  }
+
+
+  componentDidMount() {
+    this.setState({ formatDate: moment(this.props.detail.sellDate * 1000).format('YYYY.MM.DD') })
+  }
+
   render() {
     const { detail, imageList } = this.props
-    const formatDate = moment(detail.sellDate * 1000).format('YYYY.MM.DD');
+    const { formatDate } = this.state
     return (
       <View className='product-detail'>
         <View className='ad'>
