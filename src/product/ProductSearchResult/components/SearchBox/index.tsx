@@ -9,6 +9,7 @@ import { InputProps } from '@tarojs/components/types/Input'
 
 interface SearchBoxProps {
   updateResultList: (word) => void
+  toggleShowResult: () => void
 }
 
 export default class SearchBox extends Component<SearchBoxProps> {
@@ -18,14 +19,8 @@ export default class SearchBox extends Component<SearchBoxProps> {
   }
 
   inputTyping = (e: BaseEventOrig<InputProps.inputEventDetail>) => {
-    // console.log('输入的内容是', e.detail.value);
-    // axios.get(`http://rap2.taobao.org:38080/app/mock/243019/search?title=${e.detail.value}`)
-    //   .then(resp => {
-    //     this.setState({
-
-    //     })
-    //   })
-    //   .catch(err => { console.log(err); })
+    console.log("触发了事件");
+    this.props.toggleShowResult()
   }
 
   onConfirm: BaseEventOrigFunction<InputProps.inputValueEventDetail> = (event) => {
