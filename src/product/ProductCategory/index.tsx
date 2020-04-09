@@ -17,8 +17,7 @@ export default class ProductCategory extends Component<ProductCategoryProps, Pro
   }
 
   selectCategoryTap = (catId: number) => {
-    console.log('点击了');
-    this.setState({ catId }, () => { console.log(this.state.catId); })
+    this.setState({ catId })
   }
 
   render() {

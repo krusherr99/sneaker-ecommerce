@@ -26,7 +26,7 @@ export default class CategoryType extends Component<CategoryTypeProps> {
           {
             catList.map((cat) => {
               return (
-                <View className='left-item' onClick={this.selectLeftTap.bind(this, cat.catId)}>
+                <View key={cat.catId} className='left-item' onClick={this.selectLeftTap.bind(this, cat.catId)}>
                   <View className={classNames('item-container', {'select-container': cat.catId === catId})}>{cat.catName}</View>
                   <View className='bottem-line'></View>
                 </View>

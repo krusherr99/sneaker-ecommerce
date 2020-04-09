@@ -73,7 +73,6 @@ const findProductsByKeyword = (state: ProductSearchResultState) => {
   )
 }
 
-
 export default class ProductSearchResult extends Component<ProductSearchResultProps, ProductSearchResultState> {
 
   state: ProductSearchResultState = {
