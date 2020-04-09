@@ -39,13 +39,13 @@ export default class SearchFilters extends Component<SearchBoxProps> {
       <View className='filters-info'>
         <View className='filter-border-view'>
           <View className='filter-view' data-id={1}>
-            <View className={classNames('sales-view', { 'select': sortType === 1 })} onClick={this.searchFilterTap.bind(this, 1)}>销量</View>
-            <View className='price-wrap' onClick={this.searchFilterTap.bind(this, 2)}>
-              <View className={classNames('price-view', { 'select': sortType === 2 })}>价格</View>
+            <View className={classNames('sales-view', { 'select': sortType === 'soldNum' })} onClick={this.searchFilterTap.bind(this, 'soldNum')}>销量</View>
+            <View className='price-wrap' onClick={this.searchFilterTap.bind(this, 'price')}>
+              <View className={classNames('price-view', { 'select': sortType === 'price' })}>价格</View>
               <Image className='price-arrow' src={price_arrow}></Image>
             </View>
-            <View className={classNames('new-view', { 'select': sortType === 3 })} onClick={this.searchFilterTap.bind(this, 3)}>新品</View>
-            <View className='size-wrap' onClick={this.searchFilterTap.bind(this, 4)}>
+            <View className={classNames('new-view', { 'select': sortType === 'sellDate' })} onClick={this.searchFilterTap.bind(this, 'sellDate')}>新品</View>
+            <View className='size-wrap' onClick={this.searchFilterTap.bind(this, 'size')}>
               <View
                 className={classNames('size-view', { 'select': selectSizeString !== '全部' })}
               >

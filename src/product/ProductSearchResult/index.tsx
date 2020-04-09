@@ -22,7 +22,7 @@ const toggleFilterPriceUp = (filterPriceUp: FilterPriceUp): FilterPriceUp => {
   }
 }
 
-export type SortType ="soldNum" |"price" |"sellDate" |"size"
+export type SortType = "soldNum" | "price" | "sellDate" | "size"
 export type FilterPriceUp = -1 | 0 | 1
 export type SearchFilterTap = (sortType: SortType) => void
 type SearchWord = {
@@ -52,7 +52,7 @@ export interface ProductSearchResultState {
 export default class ProductSearchResult extends Component<ProductSearchResultProps, ProductSearchResultState> {
 
   state: ProductSearchResultState = {
-    sortType:"soldNum",
+    sortType: "soldNum",
     selectSize: false,
     selectSizeString: '全部',
     filterPriceUp: -1,
@@ -62,10 +62,10 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
 
   searchFilterTap = (sortType: SortType) => {
     let { selectSize, filterPriceUp } = this.state
-    sortType ==="soldNum" && (filterPriceUp = -1)
-    sortType ==="price" && (filterPriceUp = toggleFilterPriceUp(filterPriceUp))
-    sortType ==="sellDate" && (filterPriceUp = -1)
-    if (sortType ==="size") {
+    sortType === "soldNum" && (filterPriceUp = -1)
+    sortType === "price" && (filterPriceUp = toggleFilterPriceUp(filterPriceUp))
+    sortType === "sellDate" && (filterPriceUp = -1)
+    if (sortType === "size") {
       this.setState({ selectSize: !selectSize })
       return
     }
@@ -80,17 +80,10 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     this.setState({ selectSizeString, selectSize })
   }
 
+
   updateResultList = (word) => {
     console.log("word", word);
     const { sortType, filterPriceUp } = this.state
-    let sort;
-    switch (sortType) {
-      case"soldNum": sort = "soldNum"; break;
-      case"price": sort = "price"; break;
-      case"sellDate": sort = "sellDate"; break;
-      default: break;
-      // 尺码还没搞好
-    }
     axios.get(
       'http://localhost:8080/product/search', {
       params: {
@@ -99,8 +92,8 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
         // keyword先写死
         keyword: 'Jordan',
         selectSizing: '全部',
-        sortType: sort,
-        isDescending: filterPriceUp === 1 ? true : false
+        sortType,
+        isDescending: filterPriceUp === 0 ? false : true
       }
     }
     )
@@ -119,7 +112,26 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
       || prevState.filterPriceUp !== this.state.filterPriceUp
       || prevState.selectSizeString !== this.state.selectSizeString
     ) {
-      console.log("两次state不一样做些操作");
+      const { sortType, filterPriceUp } = this.state
+      axios.get(
+        'http://localhost:8080/product/search', {
+        params: {
+          // 页数目前写死
+          pageNum: 1,
+          // keyword先写死
+          keyword: 'Jordan',
+          selectSizing: '全部',
+          sortType,
+          isDescending: filterPriceUp === 0 ? false : true
+        }
+      }
+      )
+        .then(resp => {
+          this.setState({ resultList: resp.data.data.list })
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   }
 
