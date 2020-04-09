@@ -22,7 +22,7 @@ const toggleFilterPriceUp = (filterPriceUp: FilterPriceUp): FilterPriceUp => {
   }
 }
 
-export type SortType = 1 | 2 | 3 | 4
+export type SortType ="soldNum" |"price" |"sellDate" |"size"
 export type FilterPriceUp = -1 | 0 | 1
 export type SearchFilterTap = (sortType: SortType) => void
 type SearchWord = {
@@ -52,7 +52,7 @@ export interface ProductSearchResultState {
 export default class ProductSearchResult extends Component<ProductSearchResultProps, ProductSearchResultState> {
 
   state: ProductSearchResultState = {
-    sortType: 1,
+    sortType:"soldNum",
     selectSize: false,
     selectSizeString: '全部',
     filterPriceUp: -1,
@@ -62,14 +62,14 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
 
   searchFilterTap = (sortType: SortType) => {
     let { selectSize, filterPriceUp } = this.state
-    sortType === 1 && (filterPriceUp = -1)
-    sortType === 2 && (filterPriceUp = toggleFilterPriceUp(filterPriceUp))
-    sortType === 3 && (filterPriceUp = -1)
-    if (sortType === 4) {
+    sortType ==="soldNum" && (filterPriceUp = -1)
+    sortType ==="price" && (filterPriceUp = toggleFilterPriceUp(filterPriceUp))
+    sortType ==="sellDate" && (filterPriceUp = -1)
+    if (sortType ==="size") {
       this.setState({ selectSize: !selectSize })
       return
     }
-    // sortType === 4 && (selectSize = !selectSize) && (return)
+    // sortType ==="size" && (selectSize = !selectSize) && (return)
     console.log(filterPriceUp);
     this.setState({ sortType, selectSize, filterPriceUp })
   }
@@ -85,9 +85,9 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     const { sortType, filterPriceUp } = this.state
     let sort;
     switch (sortType) {
-      case 1: sort = "soldNum"; break;
-      case 2: sort = "price"; break;
-      case 3: sort = "sellDate"; break;
+      case"soldNum": sort = "soldNum"; break;
+      case"price": sort = "price"; break;
+      case"sellDate": sort = "sellDate"; break;
       default: break;
       // 尺码还没搞好
     }
