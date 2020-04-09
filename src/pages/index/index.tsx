@@ -104,6 +104,16 @@ class Index extends Component<IndexProps, IndexState> {
     // Taro.redirectTo({ url: '/pages/register/index' })
     // Taro.redirectTo({ url: '/pages/login/index' })
     // Taro.redirectTo({ url: '/order/OrderConfirmPage/index' })
+
+    // 取消支付后的待付款页面
+    // Taro.redirectTo({ url: '/order/buyer/OrderDetail/index' })
+    
+    // 支付成功后页面
+    // Taro.redirectTo({ url: '/order/BuyPaySuccessPage/index' })
+
+    // 我的账户页面
+    // Taro.redirectTo({ url: '/account/MyCashPage/index' })
+
   }
 
   componentDidMount() {

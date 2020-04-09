@@ -50,14 +50,16 @@ class App extends Component {
         "pages": [
           'index',
           'OrderConfirmPage/index',
-          'buyer/OrderDetail/index'
+          'buyer/OrderDetail/index',
+          'BuyPaySuccessPage/index'
         ]
       },
       {
         "root": "account",
         "pages": [
           'ShippingAddressPage/index',
-          'AddressEditPage/index'
+          'AddressEditPage/index',
+          'MyCashPage/index'
         ]
       }
     ],

@@ -102,6 +102,16 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
     })
   }
 
+  confirmOrder = () => {
+    Taro.showModal({
+      title: '确认放弃支付吗?',
+      content: '放弃订单支付后，订单将被取消，请尽快完成支付\n ',
+      cancelText: '放弃',
+      confirmText: '继续支付'
+    })
+      .then(res => console.log(res.confirm, res.cancel))
+  }
+
   render() {
     const { orderItem, name, address, phone } = this.state
     return (
@@ -159,7 +169,7 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
               <View className="unit">¥</View>
               <View className="amount">{orderItem.price + 23}</View>
             </View>
-            <View className='operator'>提交订单</View>
+            <View className='operator' onClick={this.confirmOrder}>提交订单</View>
           </View>
         </View>
       </View>
