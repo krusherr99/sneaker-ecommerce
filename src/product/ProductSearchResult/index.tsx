@@ -11,6 +11,7 @@ import './index.less'
 import classNames from 'classnames';
 import axios from 'taro-axios';
 import { data } from './mock/test'
+import LoadMore from '../../components/LoadMore'
 
 const sizeList = ["35.5", "36", "36.5", "37", "37.5", "38", "38.5", "39", "39.5", "40", "40.5", "41", "41.5", "42", "42.5", "43", "43.5", "44", "44.5", "45", "45.5", "46", "46.5", "47", "47.5", "48", "48.5", "全部"]
 
@@ -47,7 +48,40 @@ export interface ProductSearchResultState {
   filterPriceUp: FilterPriceUp;
   searchWordList: SearchWord[];
   resultList: ResultItem[];
+  page: number
+  hasMore: boolean
+  loading: boolean
 }
+
+const findProductsByKeyword = (state) => {
+  const { sortType, filterPriceUp, page } = state
+  axios.get(
+    'http://localhost:8080/product/search',
+    {
+      params: {
+        // 页数目前写死
+        pageNum: page,
+        // keyword先写死
+        keyword: 'Jordan',
+        selectSizing: '全部',
+        sortType,
+        isDescending: filterPriceUp === 0 ? false : true
+      }
+    }
+  )
+    .then(resp => {
+      const { list, nextPage, hasNextPage } = resp.data.data
+      this.setState({
+        resultList: list,
+        page: nextPage,
+        hasMore: hasNextPage
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    })
+}
+
 
 export default class ProductSearchResult extends Component<ProductSearchResultProps, ProductSearchResultState> {
 
@@ -57,7 +91,10 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     selectSizeString: '全部',
     filterPriceUp: -1,
     searchWordList: [],
-    resultList: []
+    resultList: [],
+    page: 1,
+    hasMore: true,
+    loading: false
   }
 
   searchFilterTap = (sortType: SortType) => {
@@ -71,7 +108,7 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     }
     // sortType ==="size" && (selectSize = !selectSize) && (return)
     console.log(filterPriceUp);
-    this.setState({ sortType, selectSize, filterPriceUp })
+    this.setState({ sortType, selectSize, filterPriceUp, page: 1, hasMore: true })
   }
 
   selectSizeTap = (selectSizeString: string) => {
@@ -80,15 +117,16 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     this.setState({ selectSizeString, selectSize })
   }
 
-
-  updateResultList = (word) => {
-    console.log("word", word);
-    const { sortType, filterPriceUp } = this.state
+  loadMore = () => {
+    console.log("触发了loadMore方法");
+    const { sortType, filterPriceUp, page, hasMore, resultList: preList } = this.state
+    if (!hasMore) { return }
+    this.setState({ loading: true })
     axios.get(
       'http://localhost:8080/product/search', {
       params: {
         // 页数目前写死
-        pageNum: 1,
+        pageNum: page,
         // keyword先写死
         keyword: 'Jordan',
         selectSizing: '全部',
@@ -98,7 +136,47 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
     }
     )
       .then(resp => {
-        this.setState({ resultList: resp.data.data.list })
+        const { list, nextPage, hasNextPage } = resp.data.data
+        setTimeout(() => {
+          this.setState({
+            resultList: preList.concat(list),
+            page: nextPage,
+            hasMore: hasNextPage,
+            loading: false
+          })
+        }, 1000)
+      })
+      .catch(err => {
+        console.log(err);
+        setTimeout(() => { this.setState({ loading: false }) }, 1000)
+      })
+
+  }
+
+
+  updateResultList = (word) => {
+    console.log("word", word);
+    const { sortType, filterPriceUp, page } = this.state
+    axios.get(
+      'http://localhost:8080/product/search', {
+      params: {
+        // 页数目前写死
+        pageNum: page,
+        // keyword先写死
+        keyword: 'Jordan',
+        selectSizing: '全部',
+        sortType,
+        isDescending: filterPriceUp === 0 ? false : true
+      }
+    }
+    )
+      .then(resp => {
+        const { list, nextPage, hasNextPage } = resp.data.data
+        this.setState({
+          resultList: list,
+          page: nextPage,
+          hasMore: hasNextPage
+        })
       })
       .catch(err => {
         console.log(err);
@@ -112,12 +190,12 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
       || prevState.filterPriceUp !== this.state.filterPriceUp
       || prevState.selectSizeString !== this.state.selectSizeString
     ) {
-      const { sortType, filterPriceUp } = this.state
+      const { sortType, filterPriceUp, page } = this.state
       axios.get(
         'http://localhost:8080/product/search', {
         params: {
           // 页数目前写死
-          pageNum: 1,
+          pageNum: page,
           // keyword先写死
           keyword: 'Jordan',
           selectSizing: '全部',
@@ -136,7 +214,7 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
   }
 
   render() {
-    const { selectSizeString, selectSize, resultList } = this.state
+    const { selectSizeString, selectSize, resultList, loading, hasMore } = this.state
     // const { searchWordList } = this.state
 
     // 实时显示匹配的搜索关键字
@@ -193,9 +271,14 @@ export default class ProductSearchResult extends Component<ProductSearchResultPr
         <ScrollView
           scrollY
           className='scroll-view'
+          onScrollToLower={this.loadMore}
         >
           <HotList list={resultList} />
           {/* <SearchList />  */}
+          <LoadMore
+            hasMore={hasMore}
+            loading={loading}
+          />
         </ScrollView>
 
       </View>
