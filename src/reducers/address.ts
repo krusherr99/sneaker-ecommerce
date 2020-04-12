@@ -1,5 +1,17 @@
 import actionTypes from '../constants/address'
 
+// interface Address {
+//   id: number,
+//   userId: number,
+//   name: string,
+//   phone: string,
+//   province: string,
+//   city: string,
+//   district: string,
+//   detailAddress: string,
+//   default: true
+// }
+
 const INITIAL_STATE = {
   addressId: 0,
   addressList: []
@@ -7,7 +19,7 @@ const INITIAL_STATE = {
 
 
 export default (state = INITIAL_STATE, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case actionTypes.INITADDRESS:
       return {
         ...state,

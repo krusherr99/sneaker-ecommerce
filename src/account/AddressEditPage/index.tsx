@@ -72,7 +72,7 @@ class AddressEditPage extends Component<AddressEditPageProps, AddressEditPageSta
       return
     }
     this.setState({ isUpdate: true })
-    axios.get(`http://localhost:8080/address/${this.$router.params.id}`)
+    axios.get(`http://172.20.10.11:8080/address/${this.$router.params.id}`)
       .then(resp => {
         const { id, userId, name, phone, detailAddress, province, city, district, isDefault } = resp.data.data
         const region = [province, city, district]
@@ -97,7 +97,7 @@ class AddressEditPage extends Component<AddressEditPageProps, AddressEditPageSta
     isUpdate
       ?
       axios.put(
-        `http://localhost:8080/address/${id}`,
+        `http://172.20.10.11:8080/address/${id}`,
         {
           id,
           userId,
@@ -127,7 +127,7 @@ class AddressEditPage extends Component<AddressEditPageProps, AddressEditPageSta
 
       :
       axios.post(
-        'http://localhost:8080/address',
+        'http://172.20.10.11:8080/address',
         {
           userId,
           name,

@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import './index.less'
 import item from './images/item.png'
 import small_icon from './images/small_icon.png'
+import axios from 'taro-axios'
 
 const tabList = [
   { title: '待付款', width: 42 },
@@ -13,6 +14,17 @@ const tabList = [
   { title: '全部订单', width: 56 },
 ]
 
+export type OrderItem = {
+  orderId: number,
+  status: string,
+  title: string,
+  size: string,
+  price: number,
+  indexImage: string,
+  createTime: string
+}
+
+
 interface OrderProps { }
 interface OrderState {
   headerWidth: number;
@@ -20,25 +32,21 @@ interface OrderState {
   selectTabWidth: number;
   animationIconWidth: number;
   slideOffset: number;
+  orderList: Array<OrderItem>
 }
 
 export default class Order extends Component<OrderProps, OrderState> {
 
   state: OrderState = {
     headerWidth: 0,
-    selectTab: 0,
+    selectTab: 3,
     selectTabWidth: 0,
     animationIconWidth: 0,
-    slideOffset: 30.125
+    slideOffset: 308.16667556762695,
+    orderList: []
   }
 
   selectTabTap = (selectTab) => {
-    // let width = 0
-    // for (let i = 0; i < selectTab; i++) {
-    //   width = width + tabList[selectTab - 1].width
-    // }
-    // width = width + 24.125 +  48.25 * (selectTab) + (tabList[selectTab].width - 30) / 2
-    // this.setState({ selectTab, slideOffset: width })
     const selectorQuery = createSelectorQuery()
     selectorQuery
       .select('.select')
@@ -47,25 +55,35 @@ export default class Order extends Component<OrderProps, OrderState> {
         rect: true
       }, resp => {
         this.setState({
+          // 获得select bar的宽度
           selectTabWidth: resp.width
         })
-
       })
       .exec()
+
     const { headerWidth } = this.state
     let width = 0;
     for (let i = 0; i < selectTab; i++) {
       width = width + tabList[selectTab - 1].width
     }
-    width = width + ((headerWidth - 182) / 8) * (selectTab * 2 + 1) +  (tabList[selectTab].width - 30) / 2
+    width = width + ((headerWidth - 182) / 8) * (selectTab * 2 + 1) + (tabList[selectTab].width - 30) / 2
     this.setState({
       slideOffset: width,
       selectTab
-    }, () => { console.log(this.state.slideOffset); })
+    })
 
   }
 
+  navigateToDetail = (orderId) => {
+    Taro.navigateTo({
+      url: `/order/buyer/OrderDetail/index?orderId=${orderId}`
+    })
+  }
+
   componentDidMount() {
+    const selectTab = parseInt(this.$router.params.selectTab)
+    this.setState({ selectTab: selectTab })
+
     const selectorQuery = createSelectorQuery()
     selectorQuery
       .select('.fix-header')
@@ -80,22 +98,43 @@ export default class Order extends Component<OrderProps, OrderState> {
       .fields({ size: true }, resp => {
         this.setState({
           animationIconWidth: resp.width
-        })
+        }, () => { this.selectTabTap(this.state.selectTab) })
       })
       .exec()
 
+    // get请求orderList
+    axios.get(`http://localhost:8080/order?userId=5&status=${selectTab}`)
+      .then(resp => {
+        this.setState({ orderList: resp.data.data })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  componentDidUpdate(preProps, preState) {
+    if (preState.selectTab !== this.state.selectTab) {
+      axios.get(`http://localhost:8080/order?userId=5&status=${this.state.selectTab}`)
+        .then(resp => {
+          this.setState({ orderList: resp.data.data })
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
   }
 
   render() {
-    const { selectTab, slideOffset } = this.state
+    const { selectTab, slideOffset, orderList } = this.state
     return (
       <View className='container-view'>
-        
+
         <View className='fix-header'>
           {
             tabList.map((tab, index) => {
               return (
                 <View
+                  key={tab.title}
                   className={classNames('header-item', { 'select': index === selectTab })}
                   onClick={this.selectTabTap.bind(this, index)}
                 >{tab.title}
@@ -107,45 +146,35 @@ export default class Order extends Component<OrderProps, OrderState> {
         </View>
         <View className='list-view'>
 
-          <View className='list-item'>
-            <View className='order-status'>交易关闭</View>
-            <View className='order-detail'>
-              <View className='image-container'>
-                <Image src={item}></Image>
-              </View>
-              <View className='order-content'>
-                <View className='order-title'>Air Jordan 1 Retro High Shadow (2018) 影子</View>
-                <View className='order-size'>40 数量x1</View>
-                <View className='price-wrapper'>
-                  <Image src={small_icon}></Image>
-                  <Text className='order-price'>￥2619</Text>
-                </View>
-              </View>
-            </View>
-            <View className='button-wrap'>
-              <View className='order-button'>删除订单</View>
-            </View>
-          </View>
-
-          <View className='list-item'>
-            <View className='order-status'>交易关闭</View>
-            <View className='order-detail'>
-              <View className='image-container'>
-                <Image src={item}></Image>
-              </View>
-              <View className='order-content'>
-                <View className='order-title'>Air Jordan 1 Retro High Shadow (2018) 影子</View>
-                <View className='order-size'>40 数量x1</View>
-                <View className='price-wrapper'>
-                  <Image src={small_icon}></Image>
-                  <View className='order-price'>￥2619</View>
-                </View>
-              </View>
-            </View>
-            <View className='button-wrap'>
-              <View className='order-button'>删除订单</View>
-            </View>
-          </View>
+          {
+            orderList.length > 0
+              ?
+              orderList.map(order => {
+                return (
+                  <View key={order.createTime} className='list-item'>
+                    <View className='order-status'>{order.status}</View>
+                    <View className='order-detail' onClick={this.navigateToDetail.bind(this, order.orderId)}>
+                      <View className='image-container'>
+                        <Image src={order.indexImage}></Image>
+                      </View>
+                      <View className='order-content'>
+                        <View className='order-title'>{order.title}</View>
+                        <View className='order-size'>{`${order.size} 数量x1`}</View>
+                        <View className='price-wrapper'>
+                          <Image src={small_icon}></Image>
+                          <Text className='order-price'>{`￥${order.price}`}</Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View className='button-wrap'>
+                      <View className='order-button'>删除订单</View>
+                    </View>
+                  </View>
+                )
+              })
+              :
+              <View className='result-empty'>这里还没有内容</View>
+          }
 
         </View>
       </View>

@@ -7,7 +7,11 @@ import { InputProps } from '@tarojs/components/types/Input'
 import classNames from 'classnames';
 import wallet from './wallet.png'
 
-export default class Test extends Component {
+interface PayMoneyProps {
+  finishPay: () => void
+}
+
+export default class PayMoney extends Component<PayMoneyProps> {
 
   state = {
     length: 0,
@@ -20,6 +24,7 @@ export default class Test extends Component {
       if (this.state.length === 6) {
         console.log('长度是', this.state.length);
         this.setState({ done: true })
+        this.props.finishPay()
       }
     })
   }

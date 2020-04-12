@@ -14,7 +14,13 @@ const item5 = 'https://cdn.poizon.com/node-common/JUU1JUFFJUEyJUU2JTlDJThEQDJ4MT
 
 export default class SearchBar extends Component {
 
-  render () {
+  navigateTo = (page) => {
+    Taro.navigateTo({
+      url: `/account/${page}/index`
+    })
+  }
+
+  render() {
     return (
       <View className='container'>
         <View className='header'>
@@ -22,20 +28,22 @@ export default class SearchBar extends Component {
           <View className='name'>登录/注册</View>
         </View>
         <View className='item-wrap'>
+
           <MineOrder />
-          <View className='container-item'>
+
+          <View className='container-item' onClick={this.navigateTo.bind(this, 'MyCashPage')}>
             <Image src={item1}></Image>
             <View className='title'>账户</View>
             <Image src={right_icon}></Image>
           </View>
-          
+
           <View className='container-item'>
             <Image src={item2}></Image>
             <View className='title'>卡卷</View>
             <Image src={right_icon}></Image>
           </View>
 
-          <View className='container-item'>
+          <View className='container-item' onClick={this.navigateTo.bind(this, 'ShippingAddressPage')}>
             <Image src={item3}></Image>
             <View className='title'>地址管理</View>
             <Image src={right_icon}></Image>

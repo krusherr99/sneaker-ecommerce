@@ -24,7 +24,7 @@ export const changeAddress = (addressId) => {
 export const updateAddress = (addressId, address) => {
   return (dispatch) => {
     axios.put(
-      `http://localhost:8080/address/${addressId}`,
+      `http://172.20.10.11:8080/address/${addressId}`,
       {
         ...address
       }
@@ -42,7 +42,7 @@ export const updateAddress = (addressId, address) => {
 
 export const initAddress = () => {
   return (dispatch) => {
-    axios.get(`http://localhost:8080/address?userId=${5}`)
+    axios.get(`http://172.20.10.11:8080/address?userId=${5}`)
       .then(resp => {
         let addressId
         (resp.data.data as Array<any>).forEach((item) => {

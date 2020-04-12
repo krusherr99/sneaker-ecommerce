@@ -27,7 +27,7 @@ export default class Login extends Component {
 
   onSubmit = () => {
     const { placeholderStyle, ...loginDto } = this.state
-    axios.post('http://localhost:8080/user/login', { ...loginDto })
+    axios.post('http://172.20.10.11:8080/user/login', { ...loginDto })
       .then(resp => {
         const { message, success } = resp.data
         if (!success) {

@@ -60,7 +60,7 @@ export default class Register extends Component<RegisterProps, RegisterState> {
       })
       return
     }
-    axios.post(`http://localhost:8080/user/register`, { ...registerDto })
+    axios.post(`http://172.20.10.11:8080/user/register`, { ...registerDto })
       .then(resp => {
         Taro.showToast({
           title: '注册成功',

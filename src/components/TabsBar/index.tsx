@@ -164,6 +164,7 @@ export default class TabsBar extends Component<TabsBarProps, TabsBarState> {
           tabList.map((tab, index) => {
             return (
               <View
+                key={tab.title}
                 className={classNames('header-item', { 'select': index === selectTab })}
                 onClick={this.selectTabTap.bind(this, index)}
               >{tab.title}

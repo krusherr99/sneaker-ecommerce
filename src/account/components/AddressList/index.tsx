@@ -63,8 +63,9 @@ class AddressList extends Component<AddressListProps> {
         item.default = true
         // redux向后端请求更新
         this.props.updateAddress(item.id, item)
+
         // 返回上一页
-        Taro.navigateBack()
+        // Taro.navigateBack()
       }
     })
   }
@@ -76,7 +77,7 @@ class AddressList extends Component<AddressListProps> {
   }
 
   deleteAddress = (id) => {
-    axios.delete(`http://localhost:8080/address/${id}`)
+    axios.delete(`http://172.20.10.11:8080/address/${id}`)
       .then(resp => {
         console.log(resp.data.data);
         this.props.initAddress()

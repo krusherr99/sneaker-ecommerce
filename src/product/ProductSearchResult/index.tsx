@@ -58,7 +58,7 @@ const findProductsByKeyword = (state: ProductSearchResultState) => {
   const { sortType, filterPriceUp, page, keyword, selectSizeString } = state
   console.log("此时state.keyword=", keyword);
   return axios.get(
-    'http://localhost:8080/product/search',
+    'http://172.20.10.11:8080/product/search',
     {
       params: {
         // 页数目前写死

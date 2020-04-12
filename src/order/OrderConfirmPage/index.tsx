@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Image, Text } from '@tarojs/components'
+import { View, Image, Text, Input } from '@tarojs/components'
 import axios from 'taro-axios';
 import './index.less'
 
@@ -7,6 +7,8 @@ import SplitLine from '../components/SplitLine'
 import Product from '../components/Product'
 import { getSkuById, getSkuByIdTest } from '../api/request'
 import { connect } from '@tarojs/redux';
+import PayMoney from '../components/PayMoney'
+import { duration } from 'moment';
 
 const remindingList = [
   '1、若商家未早36小时内发货导致交易失败，您将获得1130.45元现金及总计人民币170元的满减优惠券补偿。',
@@ -16,6 +18,7 @@ const remindingList = [
 ]
 
 export type OrderItem = {
+  spuId: number,
   imageUrl: string,
   size: string,
   title: string,
@@ -32,7 +35,10 @@ interface OrderConfirmPageState {
   name: string,
   phone: string,
   address: string
+  showPay: boolean
+  payFinish: boolean
 }
+
 
 @connect(({ address }) => ({ address }))
 export default class OrderConfirmPage extends Component<OrderConfirmPageProps, OrderConfirmPageState> {
@@ -41,6 +47,7 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
     skuId: '',
     addressId: 0,
     orderItem: {
+      spuId: 0,
       imageUrl: '',
       size: '',
       title: '',
@@ -48,13 +55,15 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
     },
     name: '',
     phone: '',
-    address: ''
+    address: '',
+    showPay: false,
+    payFinish: false
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.address.addressId !== this.props.address.addressId) {
       console.log("props不一样,执行了");
-      axios.get(`http://localhost:8080/address/${this.props.address.addressId}`)
+      axios.get(`http://172.20.10.11:8080/address/${this.props.address.addressId}`)
         .then(resp => {
           const { name, phone, detailAddress, province, city, district } = resp.data.data
           const address = province + city + district + detailAddress;
@@ -63,6 +72,10 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
         .catch(err => {
           console.log(err);
         })
+    }
+
+    if (prevState.payFinish !== this.state.payFinish) {
+
     }
   }
 
@@ -75,7 +88,7 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
 
   componentDidMount() {
     const { skuId } = this.state
-    axios.get(`http://localhost:8080/product/sku/${skuId}`)
+    axios.get(`http://172.20.10.11:8080/product/sku/${skuId}`)
       .then(resp => {
         this.setState({ orderItem: resp.data.data })
       })
@@ -83,7 +96,7 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
         console.log(err);
       })
 
-    axios.get(`http://localhost:8080/address/${this.props.address.addressId}`)
+    axios.get(`http://172.20.10.11:8080/address/${this.props.address.addressId}`)
       .then(resp => {
         const { name, phone, detailAddress, province, city, district } = resp.data.data
         const address = province + city + district + detailAddress;
@@ -93,7 +106,6 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
         console.log(err);
       })
 
-    console.log("redux连上没", this.props.address);
   }
 
   selectAddress = () => {
@@ -102,25 +114,57 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
     })
   }
 
-  confirmOrder = () => {
-    Taro.showModal({
-      title: '确认放弃支付吗?',
-      content: '放弃订单支付后，订单将被取消，请尽快完成支付\n ',
-      cancelText: '放弃',
-      confirmText: '继续支付'
+  finishPay = () => {
+    const { orderItem: { spuId, price }, skuId, address, phone, name, } = this.state
+
+    this.setState({ payFinish: true })
+    Taro.showToast({
+      title: '提交订单中',
+      duration: 2000,
+      icon: 'loading'
     })
-      .then(res => console.log(res.confirm, res.cancel))
+
+    axios.post(
+      'http://localhost:8080/order',
+      {
+        userId: 5,
+        spuId,
+        skuId,
+        address,
+        phone,
+        name,
+        price
+      }
+    )
+
+    setTimeout(() => {
+      Taro.redirectTo({
+        url: '/order/BuyPaySuccessPage/index'
+      })
+    }, 2000)
+  }
+
+  confirmOrder = () => {
+
+    this.setState({ showPay: true })
+    // Taro.showModal({
+    //   title: '确认放弃支付吗?',
+    //   content: '放弃订单支付后，订单将被取消，请尽快完成支付\n ',
+    //   cancelText: '放弃',
+    //   confirmText: '继续支付'
+    // })
+    //   .then(res => console.log(res.confirm, res.cancel))
   }
 
   render() {
-    const { orderItem, name, address, phone } = this.state
+    const { orderItem, name, address, phone, showPay } = this.state
     return (
       <View>
         <View className='address-info-container' onClick={this.selectAddress}>
           <Image className='location' src="http://cdn.poizon.com/node-common/cGxhY2UxNTgzMjIyMDAwNTgz.svg"></Image>
           <View className='info'>
             {
-              this.props.address.addressId !== 0
+              name
                 ?
                 <View>
                   <View className='user'>
@@ -172,6 +216,11 @@ export default class OrderConfirmPage extends Component<OrderConfirmPageProps, O
             <View className='operator' onClick={this.confirmOrder}>提交订单</View>
           </View>
         </View>
+
+        {
+          showPay ? <PayMoney finishPay={this.finishPay} /> : ''
+        }
+
       </View>
     )
   }

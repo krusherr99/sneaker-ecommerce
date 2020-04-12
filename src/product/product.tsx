@@ -116,7 +116,7 @@ export default class Product extends Component<ProductProps, ProductState> {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8080/product/${this.$router.params.id}`)
+    axios.get(`http://172.20.10.11:8080/product/${this.$router.params.id}`)
       .then(resp => {
         const { sizeList, imageList, ...detail } = resp.data.data
         sizeList.forEach(item => {

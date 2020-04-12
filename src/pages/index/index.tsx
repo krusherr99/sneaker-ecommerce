@@ -96,37 +96,46 @@ class Index extends Component<IndexProps, IndexState> {
     list: []
   }
 
-  componentWillMount() {
-    // 重定向
-    // Taro.redirectTo({ url: '/product/ProductSearchResult/index' })
-    // Taro.redirectTo({ url: '/product/product' })
-    // Taro.redirectTo({ url: '/account/ShippingAddressPage/index' })
-    // Taro.redirectTo({ url: '/pages/register/index' })
-    // Taro.redirectTo({ url: '/pages/login/index' })
-    // Taro.redirectTo({ url: '/order/OrderConfirmPage/index' })
+  // componentWillMount() {
+  //   // 重定向
+  //   // Taro.redirectTo({ url: '/product/ProductSearchResult/index' })
+  //   // Taro.redirectTo({ url: '/product/product' })
+  //   // Taro.redirectTo({ url: '/account/ShippingAddressPage/index' })
 
-    // 取消支付后的待付款页面
-    // Taro.redirectTo({ url: '/order/buyer/OrderDetail/index' })
-    
-    // 支付成功后页面
-    // Taro.redirectTo({ url: '/order/BuyPaySuccessPage/index' })
+  //   // 用于测试的页面
+  //   // Taro.redirectTo({ url: '/pages/test/index' })
 
-    // 我的账户页面
-    // Taro.redirectTo({ url: '/account/MyCashPage/index' })
+  //   // 注册页面
+  //   // Taro.redirectTo({ url: '/pages/register/index' })
 
-  }
+  //   // 登录页页面
+  //   // Taro.redirectTo({ url: '/pages/login/index' })
+
+  //   // 全部订单页面
+  //   // Taro.redirectTo({ url: '/order/OrderConfirmPage/index' })
+
+  //   // 取消支付后的待付款页面
+  //   // Taro.redirectTo({ url: '/order/buyer/OrderDetail/index' })
+
+  //   // 支付成功后页面
+  //   // Taro.redirectTo({ url: '/order/BuyPaySuccessPage/index' })
+
+  //   // 我的账户页面
+  //   // Taro.redirectTo({ url: '/account/MyCashPage/index' })
+
+  // }
 
   componentDidMount() {
-    axios.get(`http://localhost:8080/product?page=${this.state.page}`)
+    axios.get(`http://172.20.10.11:8080/product?page=${this.state.page}`)
       .then(resp => {
         const { list, nextPage, hasNextPage } = resp.data.data
         // setTimeout(() => {
-          this.setState({
-            list: list,
-            page: nextPage,
-            hasMore: hasNextPage,
-            // loading: false
-          })
+        this.setState({
+          list: list,
+          page: nextPage,
+          hasMore: hasNextPage,
+          // loading: false
+        })
         // }, 1000)
       })
       .catch(err => {
@@ -137,19 +146,21 @@ class Index extends Component<IndexProps, IndexState> {
 
   loadMore = () => {
     let { list: preList, hasMore } = this.state
-    if(!hasMore) { 
+    if (!hasMore) {
       return
     }
     this.setState({ loading: true })
-    axios.get(`http://localhost:8080/product?page=${this.state.page}`)
+    axios.get(`http://172.20.10.11:8080/product?page=${this.state.page}`)
       .then(resp => {
         const { list, nextPage, hasNextPage } = resp.data.data
-        setTimeout(() => { this.setState({ 
-          list: preList.concat(list), 
-          page: nextPage,
-          hasMore: hasNextPage,
-          loading: false 
-        }) }, 1000)
+        setTimeout(() => {
+          this.setState({
+            list: preList.concat(list),
+            page: nextPage,
+            hasMore: hasNextPage,
+            loading: false
+          })
+        }, 1000)
       })
       .catch(err => {
         console.log(err);

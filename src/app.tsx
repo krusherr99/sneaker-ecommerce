@@ -30,8 +30,8 @@ class App extends Component {
       // 'pages/product/ProductCategory/index',
       // 'pages/product/ProductSearchResult/index',
       // 'pages/product/product'a,
-      // 'pages/test/index',
       'pages/index/index',
+      'pages/test/index',
       'pages/tabmine/index',
       'pages/register/index',
       'pages/login/index'

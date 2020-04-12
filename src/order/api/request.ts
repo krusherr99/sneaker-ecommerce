@@ -1,7 +1,7 @@
 import axios from 'taro-axios';
 
 const service = axios.create({
-  baseURL: 'http://localhost:8080/'
+  baseURL: 'http://172.20.10.11:8080/'
 })
 
 service.interceptors.response.use(
@@ -11,7 +11,7 @@ service.interceptors.response.use(
 
 export const getSkuById = (skuId: string) => {
   return axios.get(
-    `http://localhost:8080/product/sku/${skuId}`
+    `http://172.20.10.11:8080/product/sku/${skuId}`
   )
     .then(resp => resp.data.data)
     .catch(err => err)
